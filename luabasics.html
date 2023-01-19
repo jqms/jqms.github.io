@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<script type="module" src="https://md-block.verou.me/md-block.js"></script>
+<html>
+    <head>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8810880028192246" crossorigin="anonymous"></script>
+        <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="styles/style.css"/>
+        <link rel="icon" type="onixlogo" href="favicon.ico">
+        <title>Onix Client</title>
+    </head>
+    <body>
+		<div class="topbar">
+            <div class="logothing">
+                <a href="https://onixclient.com">
+                    <img src="assets/biglogo.png" width="45" height="45" alt="logo">
+                    <span class="name">
+                        ONIX CLIENT
+                    </span>
+                </a>
+            </div>
+            <span class="navbar">
+                <a href="https://onixclient.com">Home</a>
+                <a href="faq">FAQ</a>
+                <a href="license">License</a>
+                <a href="https://onixclient.com/patreon"target="_blank" rel="noopener noreferrer">Donate</a>
+                <a href="https://docs.onixclient.com"target="_blank" rel="noopener noreferrer">Scripting</a>
+                <a href="download" class="download">Download</a>
+            </span>
+        </div>
+		<br><br>
+<md-block>
+	## Contents
+	1. [Variables](#variables)
+	2. [Data Types](#data-types)
+	3. [Booleans](#booleans)
+	4. [Control Structures](#control-structures)
+	5. [Functions](#functions)
+	6. [Strings](#strings)
+	7. [Numbers](#numbers)
+	8. [Tables](#tables)
+
+	# Lua Basics
+	<div style = "background-color: #292929; padding-left: 5px; padding-bottom: 5px; padding-right: 5px; border-radius: 5px;">
+
+	## Variables
+
+	Variables are used to store data. They are declared with the keyword `local` and can be assigned a value with the `=` operator.
+
+	<div style = "background-color: #141414; padding: 2px; border-radius: 5px;">
+
+	```lua
+		local myVariable = 5
+	```
+
+	</div>
+
+	You can use the `=` operator to assign values to variables:
+	<div style = "background-color: #141414; padding: 2px; border-radius: 5px;">
+
+	```lua
+		local x = 5
+		local y = 10
+		local z = x + y
+	```
+
+	</div>
+
+	</div>
+	<div style = "background-color: #292929; padding-left: 5px; padding-bottom: 5px; padding-right: 5px; border-radius: 5px;">
+
+	## Data Types
+	Lua has 8 data types:
+
+	<div style = "background-color: #1f1f1f; padding: 2px; border-radius: 5px;">
+		
+	* `nil` - A value that represents nothing or no value
+	* `boolean` - A value that is either true or false
+	* `number` - A value that is a number
+	* `string` - A value that is a string of characters
+	* `function` - A value that is a function
+	* `userdata` - A value that is a userdata
+	* `thread` - A value that is a thread
+	* `table` - A value that is a table
+
+	</div>
+
+		Here are some examples of each data type and how to use them:
+
+	<div style = "background-color: #141414; padding: 2px; border-radius: 5px;">
+
+	```lua
+		local number = 10 -- A number
+		local string = "Hello World" -- A string
+		local boolean = true -- A boolean
+		local table = {1, 2, 3} -- A table
+		local function = function() end -- A function
+		local thread = coroutine.create(function() end) -- A thread
+		local nil = nil -- A nil value
+	```
+
+	</div>
+	</div>
+
+	<div style = "background-color: #292929; padding-left: 5px; padding-bottom: 5px; padding-right: 5px; border-radius: 5px;">
+
+	## Booleans
+
+	Booleans are used to represent true or false values. They are declared by using the `true` or `false` keywords:
+
+	<div style = "background-color: #141414; padding: 2px; border-radius: 5px;">
+
+	```lua
+		local myBoolean = true
+	```
+
+	</div>
+
+	You can use the `and` operator to check if two conditions are true:
+
+	<div style = "background-color: #141414; padding: 2px; border-radius: 5px;">
+
+
+	```lua
+		local x = 5
+		local y = 10
+		local z = 15
+
+		if x < y and y < z then
+			print("x is less than y and y is less than z")
+		end
+	```
+
+	</div>
+
+	You can use the `or` operator to check if one of two conditions is true:
+
+	<div style = "background-color: #141414; padding: 2px; border-radius: 5px;">
+
+	```lua
+		local x = 5
+		local y = 10
+		local z = 15
+
+		if x < y or y < z then
+			print("x is less than y or y is less than z")
+		end
+	```
+
+	</div>
+
+	You can use the `not` operator to check if a condition is false:
+
+	<div style = "background-color: #141414; padding: 2px; border-radius: 5px;">
+
+	```lua
+		local x = 5
+		local y = 10
+
+		if not x < y then
+			print("x is not less than y")
+		end
+	```
+
+	</div>
+
+	They all output a true or false value. If this is confusing, you can read more about booleans [here](https://www.lua.org/pil/2.2).
+
+	</div>
+
+	<div style = "background-color: #292929; padding-left: 5px; padding-bottom: 5px; padding-right: 5px; border-radius: 5px;">
+
+	## Control Structures
+
+	Control structures are used to control the flow of your code. Lua has 3 control structures:
+	<div style = "background-color: #1f1f1f; padding: 2px; border-radius: 5px;">
+
+	* `if` - An if statement
+	* `while` - A while loop
+	* `for` - A for loop
+
+	</div>
+
+	### If Statements
+
+	If statements are used to check if a condition is true or false. If the condition is true, the code inside the if statement will be executed. If the condition is false, the code inside the if statement will not be executed.
+
+	<div style = "background-color: #141414; padding: 2px; border-radius: 5px;">
+
+	```lua
+		local x = 5
+		local y = 10
+
+		if x > y then
+			print("x is greater than y")
+		end
+	```
+
+	</div>
+
+	### While Loops
+
+	While loops are used to repeat a block of code while a condition is true.
+
+	<div style = "background-color: #141414; padding: 2px; border-radius: 5px;">
+
+	```lua
+		local x = 0
+
+		while x < 10 do
+			print(x)
+			x = x + 1
+		end
+	```
+
+	</div>
+
+	### For Loops
+
+	For loops are used to repeat a block of code a certain number of times.
+
+	<div style = "background-color: #141414; padding: 2px; border-radius: 5px;">
+
+	```lua
+		for i = 1, 10 do
+			print(i)
+		end
+	```
+
+	</div>
+
+	### If Statements
+
+	If statements are used to execute code if a condition is true. They are declared by using the `if` keyword followed by a condition and a block of code:
+
+	<div style = "background-color: #141414; padding: 2px; border-radius: 5px;">
+
+	```lua
+		if condition then
+			-- Code to execute if condition is true
+		end
+	```
+
+	</div>
+
+	You can use the `else` keyword to execute code if a condition is false:
+
+	<div style = "background-color: #141414; padding: 2px; border-radius: 5px;">
+
+	```lua
+		if condition then
+			-- Code to execute if condition is true
+		else
+			-- Code to execute if condition is false
+		end
+	```
+
+	</div>
+
+	You can use the `elseif` keyword to check multiple conditions:
+
+	<div style = "background-color: #141414; padding: 2px; border-radius: 5px;">
+
+	```lua
+		if condition1 then
+			-- Code to execute if condition1 is true
+		elseif condition2 then
+			-- Code to execute if condition1 is false and condition2 is true
+		else
+			-- Code to execute if condition1 and condition2 are false
+		end
+	```
+
+	</div>
+
+	</div>
+	</div>
+
+	<div style = "background-color: #292929; padding-left: 5px; padding-bottom: 5px; padding-right: 5px; border-radius: 5px;">
+
+	## Functions
+
+	### Built-in Functions
+	To create a custom function in Lua, you can use the function keyword followed by the function's name and a list of parameters in parentheses, like this:
+
+	<div style = "background-color: #141414; padding: 2px; border-radius: 5px;">
+
+	```lua
+		function myFunction(parameter1, parameter2)
+			-- Function body
+		end
+	```
+
+	</div>
+
+	The function body is a block of code that defines what the function does. You can use any valid Lua code inside the function body, including control structures, variables, and other functions.
+
+	Here's an example of a simple function that adds two numbers and returns the result:
+
+	### User-defined Functions
+
+	<div style = "background-color: #141414; padding: 2px; border-radius: 5px;">
+
+	```lua
+		function add(x, y)
+			return x + y
+		end
+
+		local result = add(5, 10)
+		print(result) -- 15
+	```
+
+	</div>
+
+	You can define functions using the function literal syntax, which allows you to create anonymous functions that you can assign to variables or pass as arguments to other functions. Here's an example:
+
+	<div style = "background-color: #141414; padding: 2px; border-radius: 5px;">
+
+	```lua
+		local add = function(x, y)
+			return x + y
+		end
+
+		local result = add(5, 10)
+		print(result) -- 15
+	```
+	</div>
+	</div>
+
+	<div style = "background-color: #292929; padding-left: 5px; padding-bottom: 5px; padding-right: 5px; border-radius: 5px;">
+
+	## Strings
+
+	Strings are a sequence of characters. They are declared by enclosing the characters in double quotes.
+
+	<div style = "background-color: #141414; padding: 2px; border-radius: 5px;">
+
+	```lua
+		local myString = "Hello World"
+	```
+
+	</div>
+
+	You can use the `..` operator to concatenate strings:
+
+	<div style = "background-color: #141414; padding: 2px; border-radius: 5px;">
+
+	```lua
+		local myString = "Hello" .. " " .. "World"
+	```
+
+	</div>
+
+	You can use the `#` operator to get the length of a string:
+
+	<div style = "background-color: #141414; padding: 2px; border-radius: 5px;">
+
+	```lua
+		local myString = "Hello World"
+		local length = #myString
+		print(length) -- 11
+	```
+
+	</div>
+
+	<div style = "background-color: #141414; padding: 2px; border-radius: 5px;">
+
+	```lua
+		local myString = "Hello World"
+		local length = #myString
+		print(length) -- 11
+	```
+
+	</div>
+
+	You can access individual characters in a string using the `[]` operator:
+
+	<div style = "background-color: #141414; padding: 2px; border-radius: 5px;">
+
+	```lua
+		local myString = "Hello"
+		print (myString[1]) -- H
+		print (myString[2]) -- e
+		print (myString[3]) -- l
+		print (myString[4]) -- l
+		print (myString[5]) -- o
+	```
+
+	</div>
+	</div>
+
+	<div style = "background-color: #292929; padding-left: 5px; padding-bottom: 5px; padding-right: 5px; border-radius: 5px;">
+
+	## Numbers
+
+	### Declaring Numbers
+
+	Numbers are declared by simply assigning a number to a variable:
+
+	<div style = "background-color: #141414; padding: 2px; border-radius: 5px;">
+
+	```lua
+		local myNumber = 5
+	```
+
+	</div>
+
+	### Mathematical Operations
+
+	You can use the `+` operator to add numbers:
+
+	<div style = "background-color: #141414; padding: 2px; border-radius: 5px;">
+
+	```lua
+		local result = 5 + 10
+		print(result) -- 15
+	```
+
+	</div>
+
+	You can use the `-` operator to subtract numbers:
+
+	<div style = "background-color: #141414; padding: 2px; border-radius: 5px;">
+
+	```lua
+		local result = 10 - 5
+		print(result) -- 5
+	```
+
+	</div>
+
+	You can use the `*` operator to multiply numbers:
+
+	<div style = "background-color: #141414; padding: 2px; border-radius: 5px;">
+
+	```lua
+		local result = 5 * 10
+		print(result) -- 50
+	```
+
+	</div>
+
+	You can use the `/` operator to divide numbers:
+	
+	<div style = "background-color: #141414; padding: 2px; border-radius: 5px;">
+
+	```lua
+		local result = 10 / 5
+		print(result) -- 2
+	```
+
+	</div>
+
+	### Type Conversion
+
+	If you need to convert a value to an integer, you can use the math.floor function:
+
+	<div style = "background-color: #141414; padding: 2px; border-radius: 5px;">
+
+	```lua
+		local x = 10.5
+		local y = math.floor(x) -- 10
+	```
+
+	</div>
+
+	You can also use the `tonumber` function to convert a string into an integer, as long as the string contains a valid integer value:
+
+	<div style = "background-color: #141414; padding: 2px; border-radius: 5px;">
+
+	```lua
+		local x = "10"
+		local y = tonumber(x) -- 10
+	```
+
+	</div>
+
+	### Extras
+
+	You can use scientific notation to represent large numbers:
+
+	<div style = "background-color: #141414; padding: 2px; border-radius: 5px;">
+
+	```lua
+		local x = 1e6 -- 1,000,000
+		local y = 1e-6 -- 0.000001
+	```
+
+	</div>
+
+	You can use the `math.pi` constant to represent pi:
+
+	<div style = "background-color: #141414; padding: 2px; border-radius: 5px;">
+
+	```lua
+		local x = math.pi -- 3.1415926535898
+	```
+
+	</div>
+
+	You can use the `math.huge` constant to represent infinity:
+
+	<div style = "background-color: #141414; padding: 2px; border-radius: 5px;">
+
+	```lua
+		local x = math.huge -- Infinity
+	```
+
+	</div>
+	</div>
+
+	<div style = "background-color: #292929; padding-left: 5px; padding-bottom: 5px; padding-right: 5px; border-radius: 5px;">
+
+	## Tables
+
+	Tables are used to store data in key-value pairs. They are declared by using the `{}` operator:
+
+	<div style = "background-color: #141414; padding: 2px; border-radius: 5px;">
+
+	```lua
+		local myTable = {}
+	```
+
+	</div>
+
+	You can add values to a table by using the `[]` operator:
+
+	<div style = "background-color: #141414; padding: 2px; border-radius: 5px;">
+
+	```lua
+		local myTable = {}
+		myTable["key"] = "value"
+	```
+
+	</div>
+
+	You can access values in a table by using the `[]` operator:
+
+	<div style = "background-color: #141414; padding: 2px; border-radius: 5px;">
+
+	```lua
+		local myTable = {}
+		myTable["key"] = "value"
+		local value = myTable["key"]
+	```
+
+	</div>
+
+	You can also use the `.` operator to access values in a table:
+
+	<div style = "background-color: #141414; padding: 2px; border-radius: 5px;">
+
+	```lua
+		local myTable = {}
+		myTable.key = "value"
+		local value = myTable.key
+	```
+
+	</div>
+
+	<div style = "background-color: #141414; padding: 2px; border-radius: 5px;">
+
+	```lua
+		local myTable = {}
+		myTable.key = "value"
+		local value = myTable.key
+	```
+
+	</div>
+
+	You can use the `#` operator to get the length of a table:
+
+	<div style = "background-color: #141414; padding: 2px; border-radius: 5px;">
+
+	```lua
+		local myTable = {1, 2, 3}
+		local length = #myTable
+		print(length) -- 3
+	```
+
+	</div>
+
+	You can use the `pairs` function to iterate over the key-value pairs in a table:
+
+	<div style = "background-color: #141414; padding: 2px; border-radius: 5px;">
+
+	```lua
+		local myTable = {1, 2, 3}
+		for key, value in pairs(myTable) do
+			print(key, value)
+		end
+	```
+
+	</div>
+	</div>
+</md-block>
+<footer>
+	<div>
+		<br><br>
+		<hr>
+		<p>Copyright © 2023 Onix Client</p>
+	</div>
+</footer>
+</body>
+</html>
