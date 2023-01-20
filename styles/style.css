@@ -141,13 +141,12 @@ footer {
     border-radius: 30px;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(-45deg, #0098fa, #00c4fb) border-box;
     border-radius: 50px;
     transition: all .4s ease-in-out;
     background-size: 200% 200%;
     animation: gradient 1s linear infinite;
     float: center;
-    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)))
+    -webkit-mask-image: -webkit-gradient(linear, left, right, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)))
 }
 
 .overlapB {
@@ -157,7 +156,6 @@ footer {
     border-radius: 30px;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(45deg, #0098fa, #00c4fb) border-box;
     border-radius: 50px;
     transition: all .4s ease-in-out;
     background-size: 200% 200%;
