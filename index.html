@@ -61,10 +61,14 @@
             <script>
                 let enlarged = false;
                 function clickToBig(imgID) {
+                    return
+                }
+                function clickToBigReal(imgID) {
                     image = document.getElementById(imgID)
                     if (enlarged === false) {
                         image.style.transform = "scale(1.5)";
                         image.style.transition = "transform 0.25s ease";
+                        image.style.
                         enlarged = true
                     }
                     else {
