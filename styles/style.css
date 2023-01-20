@@ -138,47 +138,40 @@ footer {
 .overlapA {
     position: relative;
     left: -200px;
-    border-radius: 30px;
+    border-radius: 20px;
     justify-content: center;
     align-items: center;
-    border-radius: 50px;
     transition: all .4s ease-in-out;
     animation: gradient 1s linear infinite;
-    float: center;
-    -webkit-mask-image: -webkit-gradient(linear, to left, to left, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)))
+}
+.overlapA:hover {
+    transform: scale(1.05);
+    rotate: -2deg;
+    animation: linear 1s ease-in-out infinite;
 }
 
 .overlapB {
     position: relative;
     top: -100px;
     left: 200px;
-    border-radius: 30px;
+    border-radius: 20px;
     justify-content: center;
     align-items: center;
-    border-radius: 50px;
     transition: all .4s ease-in-out;
-    animation: gradient 1s linear infinite;
-    float: center;
-    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)))
-}
-
-.overlapC {
-  position: relative;
-  top: -520px;
-  left: -53px;
-  transition: all .4s ease-in-out;
-  animation: gradient 1s linear infinite;
-  float: center;
-}
-
-.overlapA:hover {
-  transform: scale(1.05);
-  rotate: -2deg;
+    animation: linear-gradient 1s linear infinite;
 }
 
 .overlapB:hover {
   transform: scale(1.05);
   rotate: 2deg;
+}
+
+.overlapC {
+    position: relative;
+    top: -520px;
+    left: -53px;
+    transition: all .4s ease-in-out;
+    animation: gradient 1s linear infinite;
 }
 
 .overlapC:hover {

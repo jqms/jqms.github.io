@@ -53,11 +53,27 @@
             <b>Minecraft: Bedrock Edition</b>.
             <br>
             <div>
-                <img src="assets/main.png" width="640" height="360" class="overlapA">
+                <img src="assets/main.png" width="640" height="360" class="overlapA" id="IDoverlapA" onclick="clickToBig('IDoverlapA')"/>
                 <br>
-                <img src="assets/theming.png" width="640" height="360" class="overlapB">
-                <img src="assets/biglogo.png" width="200" height="200" class="overlapC">
+                <img src="assets/theming.png" width="640" height="360" class="overlapB" id="IDoverlapB" onclick="clickToBig('IDoverlapB')"/>
+                <img src="assets/biglogo.png" width="200" height="200" class="overlapC" id="IDoverlapC" onclick="clickToBig('IDoverlapC')"/>
             </div>
+            <script>
+                let enlarged = false;
+                function clickToBig(imgID) {
+                    image = document.getElementById(imgID)
+                    if (enlarged === false) {
+                        image.style.transform = "scale(1.5)";
+                        image.style.transition = "transform 0.25s ease";
+                        enlarged = true
+                    }
+                    else {
+                        image.style.transform = "scale(1.0)";
+                        image.style.transition = "transform 0.25s ease";
+                        enlarged = false;
+                    }
+                }
+            </script>
         </p>
     </div>
     <div>
