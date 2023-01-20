@@ -146,7 +146,7 @@ footer {
     background-size: 200% 200%;
     animation: gradient 1s linear infinite;
     float: center;
-    -webkit-mask-image: -webkit-gradient(linear, left, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+    -webkit-mask-image: -webkit-gradient(linear, to left, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
 }
 
 .overlapB {
