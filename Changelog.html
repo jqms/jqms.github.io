@@ -1,0 +1,103 @@
+<script type="module" src="https://md-block.verou.me/md-block.js"></script>
+<html>
+    <head>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8810880028192246" crossorigin="anonymous"></script>
+        <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="styles/style.css"/>
+        <link rel="icon" type="onixlogo" href="favicon.ico">
+        <title>Onix Client</title>
+    </head>
+    <body>
+		<div class="topbar">
+            <div class="logothing">
+                <a href="https://onixclient.com">
+                    <img src="assets/biglogo.png" width="45" height="45" alt="logo">
+                    <span class="name">
+                        ONIX CLIENT
+                    </span>
+                </a>
+            </div>
+            <span class="navbar">
+                <a href="https://onixclient.com">Home</a>
+                <a href="faq">FAQ</a>
+                <a href="license">License</a>
+                <a href="https://onixclient.com/patreon"target="_blank" rel="noopener noreferrer">Donate</a>
+                <a href="https://docs.onixclient.com"target="_blank" rel="noopener noreferrer">Scripting</a>
+                <a href="download" class="download">Download</a>
+            </span>
+        </div>
+		<br><br>
+<md-block>
+	# Changelog V3-W0423
+
+	# **Regular:**
+	
+	## Modules
+	
+	- Added Block Progress module
+	- Added Precision Sliders for modules such as Speed Counter or Reach Counter
+	- Added Roundness slider to keystrokes
+	- Added an option to disable Creative Tools TP lerp
+	- Added `Fast` option for Creative Tools AutoClicker
+	- Readded Audio Subtitles for 1.18.30+
+		- *It now has support for the new renderer, new features and various bug fixes. (New animation, display time, sound sorting, fixed width setting)*
+	- Added `Show Chat Message` setting to Screenshot
+	- Removed useless `Top Indicator` in `Toggle Sprint/Sneak` settings
+	- Added setting to Hide/Show “You are up to date!” when you inject
+	- Rewrote Custom Crosshair
+		- Removed click & load.
+			- It will now load the crosshair as soon as you click the crosshair
+		- UI has been revamped to use the V3 style
+		- Added outline setting
+		- Unsaved crosshairs now have a `*`
+		
+		**Crosshair editor**
+		
+		- Added pen width
+		- Added fill tool
+		- Added scroll to zoom
+		- Added click and drag positioning
+	- Added `Only Display When Holding Bow/Crossbow` to `Arrow Counter`
+	- Added `Don't Display If No Arrows` to `Arrow Counter`
+	
+	## HUD
+	
+	- Revamped a LOT of UI
+	- Added Scroll To Scale in the HUD editor
+	- Removed the scaling arrow in HUD editor
+	- Added `Don’t Hide HUD In F1` setting
+	- Rewrote the code for the scrollbar! Enjoy the new one :)
+	- Added Theme presets
+	- Added Chroma presets
+	
+	## Bug fixes
+	
+	- Fixed a Keystrokes bug where only one input could be recognised
+	- Fixed NBT `savef` functioning incorrectly if the item does not have a tag
+	- Fixed TNT Timer not displaying anything
+	- Fixed `.give` not functioning correctly on 1.16.40
+	- Fixed 1.17.41 crashing on inject
+	- `Color Options` no longer has an enabled/disabled button
+	- Fixed a bug where resizing with the `ClickGUI` open would force you to `Global Settings`
+	- Fixed `Insert` not opening the `ClickGUI` in F1
+	- Fixed `Show Indicator` not working in `Toggle Sprint/Sneak` settings
+	- Fixed a bug where module toggles would function incorrectly when you right clicked and then clicked the toggle or vice versa
+	- Adapt Module Position now has priority loading
+	
+	# **Scripting**:
+	
+	## New Features
+	
+	- Added `player.inventory().ui([slot])` - [Docs](https://docs.onixclient.com/scripting/Inventory/ui1.html)
+	- Added `client.settings.addCategory(string name)` - Docs
+	- Added `client.settings.stopCategory()` - Docs
+	
+	## QOL Updates
+	
+	- Non `.lua` files will be ignored in `.lua autoreload`
+	
+	## Bug Fixes
+	
+	- Removed “Item Pickup” animation on `gfx.item`
+	- Fixed `getItem()` crashing on 1.16.40 and 1.16.100
+</md-block>
