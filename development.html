@@ -1,725 +1,1111 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8810880028192246" crossorigin="anonymous"></script>
-    <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" href="styles/style.css" />
-    <link rel="icon" type="onixlogo" href="favicon.ico">
-    <title>Onix Client</title>
-    <meta content="Onix Client Developmental Changelog" property="og:title">
-    <meta content="https://onixclient.com" property="og:url">
-    <meta content="The Onix Client developmental, in-progress changelog." property="og:description">
-    <meta content="https://onixclient.com/assets/biglogo.png" property="og:image">
-    <meta content="#008FC1" data-react-helmet="true" name="theme-color">
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8810880028192246"
+		crossorigin="anonymous"></script>
+	<meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="styles/style.css" />
+	<link rel="icon" type="onixlogo" href="favicon.ico">
+	<title>Onix Client</title>
+	<meta content="Onix Client Developmental Changelog" property="og:title">
+	<meta content="https://onixclient.com" property="og:url">
+	<meta content="The Onix Client developmental, in-progress changelog." property="og:description">
+	<meta content="https://onixclient.com/assets/biglogo.png" property="og:image">
+	<meta content="#008FC1" data-react-helmet="true" name="theme-color">
 </head>
+
 <body>
-    <div class="topbar">
-        <div class="logothing">
-            <a href="https://onixclient.com">
-                <img src="assets/biglogo.png" width="45" height="45" alt="logo">
-                <span class="name">
-                    ONIX CLIENT
-                </span>
-            </a>
-        </div>
-        <span class="navbar">
-            <a href="https://onixclient.com">Home</a>
-            <a href="faq">FAQ</a>
-            <a href="license">License</a>
-            <a href="https://onixclient.com/patreon" target="_blank" rel="noopener noreferrer">Donate</a>
-            <a href="https://docs.onixclient.com" target="_blank" rel="noopener noreferrer">Scripting</a>
-            <a href="download" class="download">Download</a>
-        </span>
-    </div>
-		<br><br>
-<style>
-/* cspell:disable-file */
-/* webkit printing magic: print all background colors */
-html {
-	-webkit-print-color-adjust: exact;
-}
-* {
-	box-sizing: border-box;
-	-webkit-print-color-adjust: exact;
-}
-
-html,
-body {
-	background: rgb(18,18,18);
-}
-@media only screen {
-	body {
-		color: rgb(212, 212, 212);
-	}
-}
-
-body {
-	line-height: 1.5;
-}
-
-a,
-a.visited {
-	color: inherit;
-	text-decoration: underline;
-}
-
-.pdf-relative-link-path {
-	font-size: 80%;
-	color: #444;
-}
-
-h1,
-h2,
-h3 {
-	letter-spacing: -0.01em;
-	line-height: 1.2;
-	font-weight: 600;
-	margin-bottom: 0;
-}
-
-.page-title {
-	font-size: 2.5rem;
-	font-weight: 700;
-	margin-top: 0;
-	margin-bottom: 0.75em;
-}
-
-h1 {
-	font-size: 1.875rem;
-	margin-top: 1.875rem;
-}
-
-h2 {
-	font-size: 1.5rem;
-	margin-top: 1.5rem;
-}
-
-h3 {
-	font-size: 1.25rem;
-	margin-top: 1.25rem;
-}
-
-.source {
-	border: 1px solid #ddd;
-	border-radius: 3px;
-	padding: 1.5em;
-	word-break: break-all;
-}
-
-.callout {
-	border-radius: 3px;
-	padding: 1rem;
-}
-
-figure {
-	margin: 1.25em 0;
-	page-break-inside: avoid;
-}
-
-figcaption {
-	opacity: 0.5;
-	font-size: 85%;
-	margin-top: 0.5em;
-}
-
-mark {
-	background-color: transparent;
-}
-
-.indented {
-	padding-left: 1.5em;
-}
-
-hr {
-	background: transparent;
-	display: block;
-	width: 100%;
-	height: 1px;
-	visibility: visible;
-	border: none;
-	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
-}
-
-img {
-	max-width: 100%;
-}
-
-@media only print {
-	img {
-		max-height: 100vh;
-		object-fit: contain;
-	}
-}
-
-@page {
-	margin: 1in;
-}
-
-.collection-content {
-	font-size: 0.875rem;
-}
-
-.column-list {
-	display: flex;
-	justify-content: space-between;
-}
-
-.column {
-	padding: 0 1em;
-}
-
-.column:first-child {
-	padding-left: 0;
-}
-
-.column:last-child {
-	padding-right: 0;
-}
-
-.table_of_contents-item {
-	display: block;
-	font-size: 0.875rem;
-	line-height: 1.3;
-	padding: 0.125rem;
-}
-
-.table_of_contents-indent-1 {
-	margin-left: 1.5rem;
-}
-
-.table_of_contents-indent-2 {
-	margin-left: 3rem;
-}
-
-.table_of_contents-indent-3 {
-	margin-left: 4.5rem;
-}
-
-.table_of_contents-link {
-	text-decoration: none;
-	opacity: 0.7;
-	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
-}
-
-table,
-th,
-td {
-	border: 1px solid rgba(55, 53, 47, 0.09);
-	border-collapse: collapse;
-}
-
-table {
-	border-left: none;
-	border-right: none;
-}
-
-th,
-td {
-	font-weight: normal;
-	padding: 0.25em 0.5em;
-	line-height: 1.5;
-	min-height: 1.5em;
-	text-align: left;
-}
-
-th {
-	color: rgba(55, 53, 47, 0.6);
-}
-
-ol,
-ul {
-	margin: 0;
-	margin-block-start: 0.6em;
-	margin-block-end: 0.6em;
-}
-
-li > ol:first-child,
-li > ul:first-child {
-	margin-block-start: 0.6em;
-}
-
-ul > li {
-	list-style: disc;
-}
-
-ul.to-do-list {
-	text-indent: -1.7em;
-}
-
-ul.to-do-list > li {
-	list-style: none;
-}
-
-.to-do-children-checked {
-	text-decoration: line-through;
-	opacity: 0.375;
-}
-
-ul.toggle > li {
-	list-style: none;
-}
-
-ul {
-	padding-inline-start: 1.7em;
-}
-
-ul > li {
-	padding-left: 0.1em;
-}
-
-ol {
-	padding-inline-start: 1.6em;
-}
-
-ol > li {
-	padding-left: 0.2em;
-}
-
-.mono ol {
-	padding-inline-start: 2em;
-}
-
-.mono ol > li {
-	text-indent: -0.4em;
-}
-
-.toggle {
-	padding-inline-start: 0em;
-	list-style-type: none;
-}
-
-/* Indent toggle children */
-.toggle > li > details {
-	padding-left: 1.7em;
-}
-
-.toggle > li > details > summary {
-	margin-left: -1.1em;
-}
-
-.selected-value {
-	display: inline-block;
-	padding: 0 0.5em;
-	background: rgba(206, 205, 202, 0.5);
-	border-radius: 3px;
-	margin-right: 0.5em;
-	margin-top: 0.3em;
-	margin-bottom: 0.3em;
-	white-space: nowrap;
-}
-
-.collection-title {
-	display: inline-block;
-	margin-right: 1em;
-}
-
-.simple-table {
-	margin-top: 1em;
-	font-size: 0.875rem;
-	empty-cells: show;
-}
-.simple-table td {
-	height: 29px;
-	min-width: 120px;
-}
-
-.simple-table th {
-	height: 29px;
-	min-width: 120px;
-}
-
-.simple-table-header-color {
-	background: rgb(247, 246, 243);
-	color: black;
-}
-.simple-table-header {
-	font-weight: 500;
-}
-
-time {
-	opacity: 0.5;
-}
-
-.icon {
-	display: inline-block;
-	max-width: 1.2em;
-	max-height: 1.2em;
-	text-decoration: none;
-	vertical-align: text-bottom;
-	margin-right: 0.5em;
-}
-
-img.icon {
-	border-radius: 3px;
-}
-
-.user-icon {
-	width: 1.5em;
-	height: 1.5em;
-	border-radius: 100%;
-	margin-right: 0.5rem;
-}
-
-.user-icon-inner {
-	font-size: 0.8em;
-}
-
-.text-icon {
-	border: 1px solid #000;
-	text-align: center;
-}
-
-.page-cover-image {
-	display: block;
-	object-fit: cover;
-	width: 100%;
-	max-height: 30vh;
-}
-
-.page-header-icon {
-	font-size: 3rem;
-	margin-bottom: 1rem;
-}
-
-.page-header-icon-with-cover {
-	margin-top: -0.72em;
-	margin-left: 0.07em;
-}
-
-.page-header-icon img {
-	border-radius: 3px;
-}
-
-.link-to-page {
-	margin: 1em 0;
-	padding: 0;
-	border: none;
-	font-weight: 500;
-}
-
-p > .user {
-	opacity: 0.5;
-}
-
-td > .user,
-td > time {
-	white-space: nowrap;
-}
-
-input[type="checkbox"] {
-	transform: scale(1.5);
-	margin-right: 0.6em;
-	vertical-align: middle;
-}
-
-p {
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
-}
-
-.image {
-	border: none;
-	margin: 1.5em 0;
-	padding: 0;
-	border-radius: 0;
-	text-align: center;
-}
-
-.code,
-code {
-	background: rgba(135, 131, 120, 0.15);
-	border-radius: 3px;
-	padding: 0.2em 0.4em;
-	border-radius: 3px;
-	font-size: 85%;
-	tab-size: 2;
-}
-
-code {
-	color: #eb5757;
-}
-
-.code {
-	padding: 1.5em 1em;
-}
-
-.code-wrap {
-	white-space: pre-wrap;
-	word-break: break-all;
-}
-
-.code > code {
-	background: none;
-	padding: 0;
-	font-size: 100%;
-	color: inherit;
-}
-
-blockquote {
-	font-size: 1.25em;
-	margin: 1em 0;
-	padding-left: 1em;
-	border-left: 3px solid rgb(55, 53, 47);
-}
-
-.bookmark {
-	text-decoration: none;
-	max-height: 8em;
-	padding: 0;
-	display: flex;
-	width: 100%;
-	align-items: stretch;
-}
-
-.bookmark-title {
-	font-size: 0.85em;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	height: 1.75em;
-	white-space: nowrap;
-}
-
-.bookmark-text {
-	display: flex;
-	flex-direction: column;
-}
-
-.bookmark-info {
-	flex: 4 1 180px;
-	padding: 12px 14px 14px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-}
-
-.bookmark-image {
-	width: 33%;
-	flex: 1 1 180px;
-	display: block;
-	position: relative;
-	object-fit: cover;
-	border-radius: 1px;
-}
-
-.bookmark-description {
-	color: rgba(55, 53, 47, 0.6);
-	font-size: 0.75em;
-	overflow: hidden;
-	max-height: 4.5em;
-	word-break: break-word;
-}
-
-.bookmark-href {
-	font-size: 0.75em;
-	margin-top: 0.25em;
-}
-
-.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
-.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
-.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
-.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
-.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
-.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
-.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
-.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
-.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
-.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
-.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
-.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
-.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
-.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
-.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
-.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
-.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
-.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
-.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
-.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
-.highlight-default {
-	color: rgba(55, 53, 47, 1);
-}
-.highlight-gray {
-	color: rgba(120, 119, 116, 1);
-	fill: rgba(120, 119, 116, 1);
-}
-.highlight-brown {
-	color: rgba(159, 107, 83, 1);
-	fill: rgba(159, 107, 83, 1);
-}
-.highlight-orange {
-	color: rgba(217, 115, 13, 1);
-	fill: rgba(217, 115, 13, 1);
-}
-.highlight-yellow {
-	color: rgba(203, 145, 47, 1);
-	fill: rgba(203, 145, 47, 1);
-}
-.highlight-teal {
-	color: rgba(68, 131, 97, 1);
-	fill: rgba(68, 131, 97, 1);
-}
-.highlight-blue {
-	color: rgba(51, 126, 169, 1);
-	fill: rgba(51, 126, 169, 1);
-}
-.highlight-purple {
-	color: rgba(144, 101, 176, 1);
-	fill: rgba(144, 101, 176, 1);
-}
-.highlight-pink {
-	color: rgba(193, 76, 138, 1);
-	fill: rgba(193, 76, 138, 1);
-}
-.highlight-red {
-	color: rgba(212, 76, 71, 1);
-	fill: rgba(212, 76, 71, 1);
-}
-.highlight-gray_background {
-	background: rgba(241, 241, 239, 1);
-}
-.highlight-brown_background {
-	background: rgba(244, 238, 238, 1);
-}
-.highlight-orange_background {
-	background: rgba(251, 236, 221, 1);
-}
-.highlight-yellow_background {
-	background: rgba(251, 243, 219, 1);
-}
-.highlight-teal_background {
-	background: rgba(237, 243, 236, 1);
-}
-.highlight-blue_background {
-	background: rgba(231, 243, 248, 1);
-}
-.highlight-purple_background {
-	background: rgba(244, 240, 247, 0.8);
-}
-.highlight-pink_background {
-	background: rgba(249, 238, 243, 0.8);
-}
-.highlight-red_background {
-	background: rgba(253, 235, 236, 1);
-}
-.block-color-default {
-	color: inherit;
-	fill: inherit;
-}
-.block-color-gray {
-	color: rgba(120, 119, 116, 1);
-	fill: rgba(120, 119, 116, 1);
-}
-.block-color-brown {
-	color: rgba(159, 107, 83, 1);
-	fill: rgba(159, 107, 83, 1);
-}
-.block-color-orange {
-	color: rgba(217, 115, 13, 1);
-	fill: rgba(217, 115, 13, 1);
-}
-.block-color-yellow {
-	color: rgba(203, 145, 47, 1);
-	fill: rgba(203, 145, 47, 1);
-}
-.block-color-teal {
-	color: rgba(68, 131, 97, 1);
-	fill: rgba(68, 131, 97, 1);
-}
-.block-color-blue {
-	color: rgba(51, 126, 169, 1);
-	fill: rgba(51, 126, 169, 1);
-}
-.block-color-purple {
-	color: rgba(144, 101, 176, 1);
-	fill: rgba(144, 101, 176, 1);
-}
-.block-color-pink {
-	color: rgba(193, 76, 138, 1);
-	fill: rgba(193, 76, 138, 1);
-}
-.block-color-red {
-	color: rgba(212, 76, 71, 1);
-	fill: rgba(212, 76, 71, 1);
-}
-.block-color-gray_background {
-	background: rgba(241, 241, 239, 1);
-}
-.block-color-brown_background {
-	background: rgba(244, 238, 238, 1);
-}
-.block-color-orange_background {
-	background: rgba(251, 236, 221, 1);
-}
-.block-color-yellow_background {
-	background: rgba(251, 243, 219, 1);
-}
-.block-color-teal_background {
-	background: rgba(237, 243, 236, 1);
-}
-.block-color-blue_background {
-	background: rgba(231, 243, 248, 1);
-}
-.block-color-purple_background {
-	background: rgba(244, 240, 247, 0.8);
-}
-.block-color-pink_background {
-	background: rgba(249, 238, 243, 0.8);
-}
-.block-color-red_background {
-	background: rgba(253, 235, 236, 1);
-}
-.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
-.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
-.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
-.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
-.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
-.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
-.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
-.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
-.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
-.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
-
-.checkbox {
-	display: inline-flex;
-	vertical-align: text-bottom;
-	width: 16;
-	height: 16;
-	background-size: 16px;
-	margin-left: 2px;
-	margin-right: 5px;
-}
-
-.checkbox-on {
-	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
-}
-
-.checkbox-off {
-	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
-}
-	
-</style></head><body><article id="35ae03de-8639-4b00-8bc0-a9453564edfb" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="https://www.notion.so/icons/drafts_red.svg"/></div><h1 class="page-title">Changelog V3-W0423</h1></header><div class="page-body"><p id="6e74810e-e88a-49b6-af68-ff6a819de566" class="">
-</p><h1 id="326da28a-b791-4a01-825c-d6ac54f84f17" class=""><strong>Regular:</strong></h1><h2 id="822da19a-4109-4499-8984-07b29d580124" class="">Modules</h2><ul id="76f81fc4-c6b8-4446-8573-49a6e4e296ff" class="bulleted-list"><li style="list-style-type:disc">Added Block Progress module</li></ul><ul id="43a2712a-cfa2-4cfa-a5fb-059d5b949fcd" class="bulleted-list"><li style="list-style-type:disc">Added Precision Sliders for modules such as Speed Counter or Reach Counter</li></ul><ul id="a946ca2a-048f-4472-ab58-dfea8cbe53d8" class="bulleted-list"><li style="list-style-type:disc">Added Roundness slider to keystrokes</li></ul><ul id="9042d2cc-916b-45d0-b838-7ad0778a4d3a" class="bulleted-list"><li style="list-style-type:disc">Added an option to disable Creative Tools TP lerp</li></ul><ul id="71b9f68c-5ffe-40f6-8723-27bb7331ebdb" class="bulleted-list"><li style="list-style-type:disc">Added <code>Fast</code> option for Creative Tools AutoClicker </li></ul><ul id="524cac65-1422-449e-9abb-902a38adee3a" class="bulleted-list"><li style="list-style-type:disc">Readded Audio Subtitles for 1.18.30+<ul id="64eecf0a-b2ac-43b8-8471-57c835a83add" class="bulleted-list"><li style="list-style-type:circle"><em>It now has support for the new renderer, new features and various bug fixes. (New animation, display time, sound sorting, fixed width setting)</em></li></ul></li></ul><ul id="060ecfe5-7e61-41c2-b85f-da09d265f464" class="bulleted-list"><li style="list-style-type:disc">Removed useless <code>Top Indicator</code> in <code>Toggle Sprint/Sneak</code> settings</li></ul><ul id="75255078-1fd4-4b84-a074-c93877b419e2" class="bulleted-list"><li style="list-style-type:disc">Rewrote Custom Crosshair<ul id="45435157-b560-4371-a6be-8f107e667f0f" class="bulleted-list"><li style="list-style-type:circle">Removed click &amp; load.<ul id="c59421bc-ce5a-44db-89ec-0521231ee581" class="bulleted-list"><li style="list-style-type:square">It will now load the crosshair as soon as you click the crosshair</li></ul></li></ul><ul id="eb7e2f85-496f-4b6e-8c7d-b5c0063d80b8" class="bulleted-list"><li style="list-style-type:circle">UI has been revamped to use the V3 style</li></ul><ul id="b256dc75-65ef-4c38-8b4a-b6c520f9e9b1" class="bulleted-list"><li style="list-style-type:circle">Added outline setting</li></ul><ul id="1ad9f78a-31aa-456c-bde9-02a335adf8e0" class="bulleted-list"><li style="list-style-type:circle">Added crosshair previews</li></ul><p id="00f69373-af2b-439d-9fba-e87e987aa57a" class=""><strong>Crosshair editor</strong></p><ul id="78bc514f-7e0f-45e8-a984-5d1beaa3534b" class="bulleted-list"><li style="list-style-type:circle">Added pen width</li></ul><ul id="337c3ba8-bdef-40b1-9dd5-0b79251ff84a" class="bulleted-list"><li style="list-style-type:circle">Added fill tool</li></ul><ul id="847a4bf8-ef32-4b19-b457-16f0acc5fdc1" class="bulleted-list"><li style="list-style-type:circle">Added scroll to zoom</li></ul><ul id="7b9f8ccb-aa86-46e9-a7e1-150df6a1ba58" class="bulleted-list"><li style="list-style-type:circle">Added click and drag positioning</li></ul></li></ul><ul id="2c8748c3-6808-4b5c-b7b8-10c436c6c2bd" class="bulleted-list"><li style="list-style-type:disc">Added <code>Only Display When Holding Bow/Crossbow</code> to <code>Arrow Counter</code></li></ul><ul id="1224b679-2fbb-40fd-a2e8-812c4cba7b82" class="bulleted-list"><li style="list-style-type:disc">Added <code>Don&#x27;t Display If No Arrows</code> to <code>Arrow Counter</code></li></ul><ul id="ff66599b-3470-4d6b-8fbd-24ce19b61f89" class="bulleted-list"><li style="list-style-type:disc">Added <code>Added Don&#x27;t Display If No Pots/Soups</code> to <code>Potion Counter</code></li></ul><ul id="d05012df-3b18-4656-af9e-62a775f8a441" class="bulleted-list"><li style="list-style-type:disc">Added <code>Always Center</code> setting to <code>Compass</code></li></ul><ul id="af27d6ab-c25e-4588-9df7-b29c6ec6f467" class="bulleted-list"><li style="list-style-type:disc">Added a height offset to <code>Light Overlay</code> to combat snow layers</li></ul><ul id="dbe8ace4-61e7-4c70-9e1d-56d21519d963" class="bulleted-list"><li style="list-style-type:disc">Added <code>Day Counter</code></li></ul><ul id="694b9b5e-5b58-45c3-959c-da38c8170149" class="bulleted-list"><li style="list-style-type:disc">Added <code>Low Health Warning</code></li></ul><ul id="065de490-fb0f-4d6e-9391-4cdd01e99df2" class="bulleted-list"><li style="list-style-type:disc">Added <code>Particle Multiplier</code></li></ul><ul id="99edddf6-6a3a-4fe8-978d-cb7bd997b2e9" class="bulleted-list"><li style="list-style-type:disc">Added <code>AutoGG</code> again</li></ul><h2 id="8865ac00-0047-437f-b083-3ea751a5bf28" class="">HUD</h2><ul id="e4e7da49-2548-4c88-bb83-55155d0c4591" class="bulleted-list"><li style="list-style-type:disc">Revamped a LOT of UI</li></ul><ul id="d53c727e-f7de-4c86-93bc-8dce03bc1402" class="bulleted-list"><li style="list-style-type:disc">Added Scroll To Scale in the HUD editor</li></ul><ul id="d153ccc5-a9f5-450b-990c-c18f71a37f84" class="bulleted-list"><li style="list-style-type:disc">Removed the scaling arrow in HUD editor</li></ul><ul id="53279b05-1f94-42b1-8c26-d3142b227f7f" class="bulleted-list"><li style="list-style-type:disc">Added <code>Don’t Hide HUD In F1</code> setting to global settings</li></ul><ul id="f8ad0a9b-6ab5-4108-9b3f-e2d8c5475040" class="bulleted-list"><li style="list-style-type:disc">Rewrote the code for the scrollbar! Enjoy the new one :)</li></ul><ul id="71300a2f-2204-4fc2-a188-9367a6ca1623" class="bulleted-list"><li style="list-style-type:disc">Added Theme presets</li></ul><ul id="20dfb72c-1e04-4256-84a4-9f3fbdd76534" class="bulleted-list"><li style="list-style-type:disc">Added Chroma presets</li></ul><ul id="2538289b-38a6-46a6-9d15-82769bb99260" class="bulleted-list"><li style="list-style-type:disc">Changed Notifications to be round</li></ul><ul id="2464be29-2efe-4483-83ef-6a33e24c1492" class="bulleted-list"><li style="list-style-type:disc">There is now a new default config</li></ul><ul id="069f3227-1e97-4944-8a88-ebf3a357efba" class="bulleted-list"><li style="list-style-type:disc">Added <code>Outline</code> to text modules</li></ul><h2 id="28bce7ae-21fd-4115-bf3e-1027ca602afd" class="">Bug fixes</h2><ul id="e6172368-49fe-483a-8c8e-d28017f6bf42" class="bulleted-list"><li style="list-style-type:disc">Fixed a Keystrokes bug where only one input could be recognised</li></ul><ul id="20e0cbcb-8c78-4e3e-8e28-94a3fb049fd9" class="bulleted-list"><li style="list-style-type:disc">Fixed NBT <code>savef</code> functioning incorrectly if the item does not have a tag</li></ul><ul id="d842ed2e-fa9a-451e-b816-cb116a345574" class="bulleted-list"><li style="list-style-type:disc">Fixed TNT Timer not displaying anything</li></ul><ul id="ee7b92a8-9eed-4d89-88c1-8ad4e7ef9105" class="bulleted-list"><li style="list-style-type:disc">Fixed <code>.give</code> not functioning correctly on 1.16.40</li></ul><ul id="8224028d-a05b-4c90-b1b2-0165faaec1b7" class="bulleted-list"><li style="list-style-type:disc">Fixed 1.17.41 crashing on inject</li></ul><ul id="09418a37-9f45-4d0e-a118-d526496e771c" class="bulleted-list"><li style="list-style-type:disc">Fixed a bug where resizing with the <code>ClickGUI</code> open would force you to <code>Global Settings</code></li></ul><ul id="c933878e-c5de-4cd3-9e98-8bec8137757b" class="bulleted-list"><li style="list-style-type:disc">Fixed <code>Insert</code> not opening the <code>ClickGUI</code> in when the HUD was hidden</li></ul><ul id="65c7979f-33b1-4b6b-b7a7-931c548e2cd8" class="bulleted-list"><li style="list-style-type:disc">Fixed <code>Show Indicator</code> not working in <code>Toggle Sprint/Sneak</code> settings</li></ul><ul id="0f699f1f-c0e1-4d67-952b-d875c7ae59ec" class="bulleted-list"><li style="list-style-type:disc">Fixed a bug where module toggles would function incorrectly when you right clicked and then clicked the toggle or vice versa</li></ul><ul id="71ac207d-f52c-402f-9a52-b585666c4c59" class="bulleted-list"><li style="list-style-type:disc">Fixed a bug where when leaving the UI, precision selected sliders would not unfocus if they were focused when you left</li></ul><ul id="b442909d-b801-4dd6-8ef5-7ecbf8667f0d" class="bulleted-list"><li style="list-style-type:disc">Fixed <code>Combo Counter</code> functioning incorrectly</li></ul><h2 id="625a892c-4b8b-472d-9d6f-011800708c26" class="">Miscellaneous</h2><ul id="2bc70224-42e4-4643-a5a0-e6e9ece29c98" class="bulleted-list"><li style="list-style-type:disc">Added Mouse Button 5 &amp; 6 support to keybinds</li></ul><ul id="8de4cedc-53da-4714-bf1d-6f88953db7c2" class="bulleted-list"><li style="list-style-type:disc"><code>Color Options</code> no longer has an enabled/disabled button</li></ul><ul id="3feac814-d042-43c6-b174-03745b1df821" class="bulleted-list"><li style="list-style-type:disc"><code>Adapt Module Position</code> now has priority loading</li></ul><ul id="66d76e1b-dcc1-4891-9b4a-750cef55bc7a" class="bulleted-list"><li style="list-style-type:disc">Added <code>.directory</code> command</li></ul><ul id="d01f9d0b-b7a7-4766-b71a-b3a8f78f0edf" class="bulleted-list"><li style="list-style-type:disc">Added <code>Expand Direction</code> setting for better module alignment</li></ul><ul id="93727613-75f1-4aee-8416-bb2e3b86392f" class="bulleted-list"><li style="list-style-type:disc">Added setting to Hide/Show “You are up to date!” when you inject</li></ul><ul id="40102b65-687a-4a22-9a3e-2f590313996e" class="bulleted-list"><li style="list-style-type:disc">Improved the <code>Freelook</code> head-rotation glitch - can’t get you banned from servers anymore</li></ul><ul id="a77d0531-973a-4c4c-bcdd-005dd2b70c4a" class="bulleted-list"><li style="list-style-type:disc">Added <code>Show Chat Message</code> setting to <code>Screenshot</code> settings</li></ul><ul id="9cf40496-8ab8-4c11-93c0-47fcefff67e0" class="bulleted-list"><li style="list-style-type:disc">Added <code>Stop All Momentum</code> key in <code>Creative Tools</code></li></ul></div></article></body></html>
-	<footer>
-        <div>
+	<div class="topbar">
+		<div class="logothing">
+			<a href="https://onixclient.com">
+				<img src="assets/biglogo.png" width="45" height="45" alt="logo">
+				<span class="name">
+					ONIX CLIENT
+				</span>
+			</a>
+		</div>
+		<span class="navbar">
+			<a href="https://onixclient.com">Home</a>
+			<a href="faq">FAQ</a>
+			<a href="license">License</a>
+			<a href="https://onixclient.com/patreon" target="_blank" rel="noopener noreferrer">Donate</a>
+			<a href="https://docs.onixclient.com" target="_blank" rel="noopener noreferrer">Scripting</a>
+			<a href="download" class="download">Download</a>
+		</span>
+	</div>
+	<br><br>
+	<style>
+		/* cspell:disable-file */
+		/* webkit printing magic: print all background colors */
+		html {
+			-webkit-print-color-adjust: exact;
+		}
+
+		* {
+			box-sizing: border-box;
+			-webkit-print-color-adjust: exact;
+		}
+
+		html,
+		body {
+			background: rgb(18, 18, 18);
+		}
+
+		@media only screen {
+			body {
+				color: rgb(212, 212, 212);
+			}
+		}
+
+		body {
+			line-height: 1.5;
+		}
+
+		a,
+		a.visited {
+			color: inherit;
+			text-decoration: underline;
+		}
+
+		.pdf-relative-link-path {
+			font-size: 80%;
+			color: #444;
+		}
+
+		h1,
+		h2,
+		h3 {
+			letter-spacing: -0.01em;
+			line-height: 1.2;
+			font-weight: 600;
+			margin-bottom: 0;
+		}
+
+		.page-title {
+			font-size: 2.5rem;
+			font-weight: 700;
+			margin-top: 0;
+			margin-bottom: 0.75em;
+		}
+
+		h1 {
+			font-size: 1.875rem;
+			margin-top: 1.875rem;
+		}
+
+		h2 {
+			font-size: 1.5rem;
+			margin-top: 1.5rem;
+		}
+
+		h3 {
+			font-size: 1.25rem;
+			margin-top: 1.25rem;
+		}
+
+		.source {
+			border: 1px solid #ddd;
+			border-radius: 3px;
+			padding: 1.5em;
+			word-break: break-all;
+		}
+
+		.callout {
+			border-radius: 3px;
+			padding: 1rem;
+		}
+
+		figure {
+			margin: 1.25em 0;
+			page-break-inside: avoid;
+		}
+
+		figcaption {
+			opacity: 0.5;
+			font-size: 85%;
+			margin-top: 0.5em;
+		}
+
+		mark {
+			background-color: transparent;
+		}
+
+		.indented {
+			padding-left: 1.5em;
+		}
+
+		hr {
+			background: transparent;
+			display: block;
+			width: 100%;
+			height: 1px;
+			visibility: visible;
+			border: none;
+			border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+		}
+
+		img {
+			max-width: 100%;
+		}
+
+		@media only print {
+			img {
+				max-height: 100vh;
+				object-fit: contain;
+			}
+		}
+
+		@page {
+			margin: 1in;
+		}
+
+		.collection-content {
+			font-size: 0.875rem;
+		}
+
+		.column-list {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.column {
+			padding: 0 1em;
+		}
+
+		.column:first-child {
+			padding-left: 0;
+		}
+
+		.column:last-child {
+			padding-right: 0;
+		}
+
+		.table_of_contents-item {
+			display: block;
+			font-size: 0.875rem;
+			line-height: 1.3;
+			padding: 0.125rem;
+		}
+
+		.table_of_contents-indent-1 {
+			margin-left: 1.5rem;
+		}
+
+		.table_of_contents-indent-2 {
+			margin-left: 3rem;
+		}
+
+		.table_of_contents-indent-3 {
+			margin-left: 4.5rem;
+		}
+
+		.table_of_contents-link {
+			text-decoration: none;
+			opacity: 0.7;
+			border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+		}
+
+		table,
+		th,
+		td {
+			border: 1px solid rgba(55, 53, 47, 0.09);
+			border-collapse: collapse;
+		}
+
+		table {
+			border-left: none;
+			border-right: none;
+		}
+
+		th,
+		td {
+			font-weight: normal;
+			padding: 0.25em 0.5em;
+			line-height: 1.5;
+			min-height: 1.5em;
+			text-align: left;
+		}
+
+		th {
+			color: rgba(55, 53, 47, 0.6);
+		}
+
+		ol,
+		ul {
+			margin: 0;
+			margin-block-start: 0.6em;
+			margin-block-end: 0.6em;
+		}
+
+		li>ol:first-child,
+		li>ul:first-child {
+			margin-block-start: 0.6em;
+		}
+
+		ul>li {
+			list-style: disc;
+		}
+
+		ul.to-do-list {
+			text-indent: -1.7em;
+		}
+
+		ul.to-do-list>li {
+			list-style: none;
+		}
+
+		.to-do-children-checked {
+			text-decoration: line-through;
+			opacity: 0.375;
+		}
+
+		ul.toggle>li {
+			list-style: none;
+		}
+
+		ul {
+			padding-inline-start: 1.7em;
+		}
+
+		ul>li {
+			padding-left: 0.1em;
+		}
+
+		ol {
+			padding-inline-start: 1.6em;
+		}
+
+		ol>li {
+			padding-left: 0.2em;
+		}
+
+		.mono ol {
+			padding-inline-start: 2em;
+		}
+
+		.mono ol>li {
+			text-indent: -0.4em;
+		}
+
+		.toggle {
+			padding-inline-start: 0em;
+			list-style-type: none;
+		}
+
+		/* Indent toggle children */
+		.toggle>li>details {
+			padding-left: 1.7em;
+		}
+
+		.toggle>li>details>summary {
+			margin-left: -1.1em;
+		}
+
+		.selected-value {
+			display: inline-block;
+			padding: 0 0.5em;
+			background: rgba(206, 205, 202, 0.5);
+			border-radius: 3px;
+			margin-right: 0.5em;
+			margin-top: 0.3em;
+			margin-bottom: 0.3em;
+			white-space: nowrap;
+		}
+
+		.collection-title {
+			display: inline-block;
+			margin-right: 1em;
+		}
+
+		.simple-table {
+			margin-top: 1em;
+			font-size: 0.875rem;
+			empty-cells: show;
+		}
+
+		.simple-table td {
+			height: 29px;
+			min-width: 120px;
+		}
+
+		.simple-table th {
+			height: 29px;
+			min-width: 120px;
+		}
+
+		.simple-table-header-color {
+			background: rgb(247, 246, 243);
+			color: black;
+		}
+
+		.simple-table-header {
+			font-weight: 500;
+		}
+
+		time {
+			opacity: 0.5;
+		}
+
+		.icon {
+			display: inline-block;
+			max-width: 1.2em;
+			max-height: 1.2em;
+			text-decoration: none;
+			vertical-align: text-bottom;
+			margin-right: 0.5em;
+		}
+
+		img.icon {
+			border-radius: 3px;
+		}
+
+		.user-icon {
+			width: 1.5em;
+			height: 1.5em;
+			border-radius: 100%;
+			margin-right: 0.5rem;
+		}
+
+		.user-icon-inner {
+			font-size: 0.8em;
+		}
+
+		.text-icon {
+			border: 1px solid #000;
+			text-align: center;
+		}
+
+		.page-cover-image {
+			display: block;
+			object-fit: cover;
+			width: 100%;
+			max-height: 30vh;
+		}
+
+		.page-header-icon {
+			font-size: 3rem;
+			margin-bottom: 1rem;
+		}
+
+		.page-header-icon-with-cover {
+			margin-top: -0.72em;
+			margin-left: 0.07em;
+		}
+
+		.page-header-icon img {
+			border-radius: 3px;
+		}
+
+		.link-to-page {
+			margin: 1em 0;
+			padding: 0;
+			border: none;
+			font-weight: 500;
+		}
+
+		p>.user {
+			opacity: 0.5;
+		}
+
+		td>.user,
+		td>time {
+			white-space: nowrap;
+		}
+
+		input[type="checkbox"] {
+			transform: scale(1.5);
+			margin-right: 0.6em;
+			vertical-align: middle;
+		}
+
+		p {
+			margin-top: 0.5em;
+			margin-bottom: 0.5em;
+		}
+
+		.image {
+			border: none;
+			margin: 1.5em 0;
+			padding: 0;
+			border-radius: 0;
+			text-align: center;
+		}
+
+		.code,
+		code {
+			background: rgba(135, 131, 120, 0.15);
+			border-radius: 3px;
+			padding: 0.2em 0.4em;
+			border-radius: 3px;
+			font-size: 85%;
+			tab-size: 2;
+		}
+
+		code {
+			color: #eb5757;
+		}
+
+		.code {
+			padding: 1.5em 1em;
+		}
+
+		.code-wrap {
+			white-space: pre-wrap;
+			word-break: break-all;
+		}
+
+		.code>code {
+			background: none;
+			padding: 0;
+			font-size: 100%;
+			color: inherit;
+		}
+
+		blockquote {
+			font-size: 1.25em;
+			margin: 1em 0;
+			padding-left: 1em;
+			border-left: 3px solid rgb(55, 53, 47);
+		}
+
+		.bookmark {
+			text-decoration: none;
+			max-height: 8em;
+			padding: 0;
+			display: flex;
+			width: 100%;
+			align-items: stretch;
+		}
+
+		.bookmark-title {
+			font-size: 0.85em;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			height: 1.75em;
+			white-space: nowrap;
+		}
+
+		.bookmark-text {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.bookmark-info {
+			flex: 4 1 180px;
+			padding: 12px 14px 14px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+		}
+
+		.bookmark-image {
+			width: 33%;
+			flex: 1 1 180px;
+			display: block;
+			position: relative;
+			object-fit: cover;
+			border-radius: 1px;
+		}
+
+		.bookmark-description {
+			color: rgba(55, 53, 47, 0.6);
+			font-size: 0.75em;
+			overflow: hidden;
+			max-height: 4.5em;
+			word-break: break-word;
+		}
+
+		.bookmark-href {
+			font-size: 0.75em;
+			margin-top: 0.25em;
+		}
+
+		.sans {
+			font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+		}
+
+		.code {
+			font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace;
+		}
+
+		.serif {
+			font-family: Lyon-Text, Georgia, ui-serif, serif;
+		}
+
+		.mono {
+			font-family: iawriter-mono, Nitti, Menlo, Courier, monospace;
+		}
+
+		.pdf .sans {
+			font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP';
+		}
+
+		.pdf:lang(zh-CN) .sans {
+			font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC';
+		}
+
+		.pdf:lang(zh-TW) .sans {
+			font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC';
+		}
+
+		.pdf:lang(ko-KR) .sans {
+			font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR';
+		}
+
+		.pdf .code {
+			font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP';
+		}
+
+		.pdf:lang(zh-CN) .code {
+			font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC';
+		}
+
+		.pdf:lang(zh-TW) .code {
+			font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC';
+		}
+
+		.pdf:lang(ko-KR) .code {
+			font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR';
+		}
+
+		.pdf .serif {
+			font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP';
+		}
+
+		.pdf:lang(zh-CN) .serif {
+			font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC';
+		}
+
+		.pdf:lang(zh-TW) .serif {
+			font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC';
+		}
+
+		.pdf:lang(ko-KR) .serif {
+			font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR';
+		}
+
+		.pdf .mono {
+			font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP';
+		}
+
+		.pdf:lang(zh-CN) .mono {
+			font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC';
+		}
+
+		.pdf:lang(zh-TW) .mono {
+			font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC';
+		}
+
+		.pdf:lang(ko-KR) .mono {
+			font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR';
+		}
+
+		.highlight-default {
+			color: rgba(55, 53, 47, 1);
+		}
+
+		.highlight-gray {
+			color: rgba(120, 119, 116, 1);
+			fill: rgba(120, 119, 116, 1);
+		}
+
+		.highlight-brown {
+			color: rgba(159, 107, 83, 1);
+			fill: rgba(159, 107, 83, 1);
+		}
+
+		.highlight-orange {
+			color: rgba(217, 115, 13, 1);
+			fill: rgba(217, 115, 13, 1);
+		}
+
+		.highlight-yellow {
+			color: rgba(203, 145, 47, 1);
+			fill: rgba(203, 145, 47, 1);
+		}
+
+		.highlight-teal {
+			color: rgba(68, 131, 97, 1);
+			fill: rgba(68, 131, 97, 1);
+		}
+
+		.highlight-blue {
+			color: rgba(51, 126, 169, 1);
+			fill: rgba(51, 126, 169, 1);
+		}
+
+		.highlight-purple {
+			color: rgba(144, 101, 176, 1);
+			fill: rgba(144, 101, 176, 1);
+		}
+
+		.highlight-pink {
+			color: rgba(193, 76, 138, 1);
+			fill: rgba(193, 76, 138, 1);
+		}
+
+		.highlight-red {
+			color: rgba(212, 76, 71, 1);
+			fill: rgba(212, 76, 71, 1);
+		}
+
+		.highlight-gray_background {
+			background: rgba(241, 241, 239, 1);
+		}
+
+		.highlight-brown_background {
+			background: rgba(244, 238, 238, 1);
+		}
+
+		.highlight-orange_background {
+			background: rgba(251, 236, 221, 1);
+		}
+
+		.highlight-yellow_background {
+			background: rgba(251, 243, 219, 1);
+		}
+
+		.highlight-teal_background {
+			background: rgba(237, 243, 236, 1);
+		}
+
+		.highlight-blue_background {
+			background: rgba(231, 243, 248, 1);
+		}
+
+		.highlight-purple_background {
+			background: rgba(244, 240, 247, 0.8);
+		}
+
+		.highlight-pink_background {
+			background: rgba(249, 238, 243, 0.8);
+		}
+
+		.highlight-red_background {
+			background: rgba(253, 235, 236, 1);
+		}
+
+		.block-color-default {
+			color: inherit;
+			fill: inherit;
+		}
+
+		.block-color-gray {
+			color: rgba(120, 119, 116, 1);
+			fill: rgba(120, 119, 116, 1);
+		}
+
+		.block-color-brown {
+			color: rgba(159, 107, 83, 1);
+			fill: rgba(159, 107, 83, 1);
+		}
+
+		.block-color-orange {
+			color: rgba(217, 115, 13, 1);
+			fill: rgba(217, 115, 13, 1);
+		}
+
+		.block-color-yellow {
+			color: rgba(203, 145, 47, 1);
+			fill: rgba(203, 145, 47, 1);
+		}
+
+		.block-color-teal {
+			color: rgba(68, 131, 97, 1);
+			fill: rgba(68, 131, 97, 1);
+		}
+
+		.block-color-blue {
+			color: rgba(51, 126, 169, 1);
+			fill: rgba(51, 126, 169, 1);
+		}
+
+		.block-color-purple {
+			color: rgba(144, 101, 176, 1);
+			fill: rgba(144, 101, 176, 1);
+		}
+
+		.block-color-pink {
+			color: rgba(193, 76, 138, 1);
+			fill: rgba(193, 76, 138, 1);
+		}
+
+		.block-color-red {
+			color: rgba(212, 76, 71, 1);
+			fill: rgba(212, 76, 71, 1);
+		}
+
+		.block-color-gray_background {
+			background: rgba(241, 241, 239, 1);
+		}
+
+		.block-color-brown_background {
+			background: rgba(244, 238, 238, 1);
+		}
+
+		.block-color-orange_background {
+			background: rgba(251, 236, 221, 1);
+		}
+
+		.block-color-yellow_background {
+			background: rgba(251, 243, 219, 1);
+		}
+
+		.block-color-teal_background {
+			background: rgba(237, 243, 236, 1);
+		}
+
+		.block-color-blue_background {
+			background: rgba(231, 243, 248, 1);
+		}
+
+		.block-color-purple_background {
+			background: rgba(244, 240, 247, 0.8);
+		}
+
+		.block-color-pink_background {
+			background: rgba(249, 238, 243, 0.8);
+		}
+
+		.block-color-red_background {
+			background: rgba(253, 235, 236, 1);
+		}
+
+		.select-value-color-pink {
+			background-color: rgba(245, 224, 233, 1);
+		}
+
+		.select-value-color-purple {
+			background-color: rgba(232, 222, 238, 1);
+		}
+
+		.select-value-color-green {
+			background-color: rgba(219, 237, 219, 1);
+		}
+
+		.select-value-color-gray {
+			background-color: rgba(227, 226, 224, 1);
+		}
+
+		.select-value-color-opaquegray {
+			background-color: rgba(255, 255, 255, 0.0375);
+		}
+
+		.select-value-color-orange {
+			background-color: rgba(250, 222, 201, 1);
+		}
+
+		.select-value-color-brown {
+			background-color: rgba(238, 224, 218, 1);
+		}
+
+		.select-value-color-red {
+			background-color: rgba(255, 226, 221, 1);
+		}
+
+		.select-value-color-yellow {
+			background-color: rgba(253, 236, 200, 1);
+		}
+
+		.select-value-color-blue {
+			background-color: rgba(211, 229, 239, 1);
+		}
+
+		.checkbox {
+			display: inline-flex;
+			vertical-align: text-bottom;
+			width: 16;
+			height: 16;
+			background-size: 16px;
+			margin-left: 2px;
+			margin-right: 5px;
+		}
+
+		.checkbox-on {
+			background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+		}
+
+		.checkbox-off {
+			background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+		}
+
+		.changelogOffset {
+			max-width: 2000px;
+			margin: 2em auto;
+		}
+	</style>
+	</head>
+	</style>
+	<div class="changelogOffset">
+		</head>
+
+		<body>
+			<article id="35ae03de-8639-4b00-8bc0-a9453564edfb" class="page sans">
+				<header>
+					<div class="page-header-icon undefined"><img class="icon"
+							src="https://www.notion.so/icons/drafts_red.svg" /></div>
+					<h1 class="page-title">Changelog V3-W0423</h1>
+				</header>
+				<div class="page-body">
+					<p id="6e74810e-e88a-49b6-af68-ff6a819de566" class="">
+					</p>
+					<h1 id="326da28a-b791-4a01-825c-d6ac54f84f17" class=""><strong>Regular:</strong></h1>
+					<h2 id="822da19a-4109-4499-8984-07b29d580124" class="">Modules</h2>
+					<ul id="76f81fc4-c6b8-4446-8573-49a6e4e296ff" class="bulleted-list">
+						<li style="list-style-type:disc">Added Block Progress module</li>
+					</ul>
+					<ul id="43a2712a-cfa2-4cfa-a5fb-059d5b949fcd" class="bulleted-list">
+						<li style="list-style-type:disc">Added Precision Sliders for modules such as Speed Counter or
+							Reach Counter</li>
+					</ul>
+					<ul id="a946ca2a-048f-4472-ab58-dfea8cbe53d8" class="bulleted-list">
+						<li style="list-style-type:disc">Added Roundness slider to keystrokes</li>
+					</ul>
+					<ul id="9042d2cc-916b-45d0-b838-7ad0778a4d3a" class="bulleted-list">
+						<li style="list-style-type:disc">Added an option to disable Creative Tools TP lerp</li>
+					</ul>
+					<ul id="71b9f68c-5ffe-40f6-8723-27bb7331ebdb" class="bulleted-list">
+						<li style="list-style-type:disc">Added <code>Fast</code> option for Creative Tools AutoClicker
+						</li>
+					</ul>
+					<ul id="524cac65-1422-449e-9abb-902a38adee3a" class="bulleted-list">
+						<li style="list-style-type:disc">Readded Audio Subtitles for 1.18.30+<ul
+								id="64eecf0a-b2ac-43b8-8471-57c835a83add" class="bulleted-list">
+								<li style="list-style-type:circle"><em>It now has support for the new renderer, new
+										features and various bug fixes. (New animation, display time, sound sorting,
+										fixed width setting)</em></li>
+							</ul>
+						</li>
+					</ul>
+					<ul id="060ecfe5-7e61-41c2-b85f-da09d265f464" class="bulleted-list">
+						<li style="list-style-type:disc">Removed useless <code>Top Indicator</code> in
+							<code>Toggle Sprint/Sneak</code> settings</li>
+					</ul>
+					<ul id="75255078-1fd4-4b84-a074-c93877b419e2" class="bulleted-list">
+						<li style="list-style-type:disc">Rewrote Custom Crosshair<ul
+								id="45435157-b560-4371-a6be-8f107e667f0f" class="bulleted-list">
+								<li style="list-style-type:circle">Removed click &amp; load.<ul
+										id="c59421bc-ce5a-44db-89ec-0521231ee581" class="bulleted-list">
+										<li style="list-style-type:square">It will now load the crosshair as soon as you
+											click the crosshair</li>
+									</ul>
+								</li>
+							</ul>
+							<ul id="eb7e2f85-496f-4b6e-8c7d-b5c0063d80b8" class="bulleted-list">
+								<li style="list-style-type:circle">UI has been revamped to use the V3 style</li>
+							</ul>
+							<ul id="b256dc75-65ef-4c38-8b4a-b6c520f9e9b1" class="bulleted-list">
+								<li style="list-style-type:circle">Added outline setting</li>
+							</ul>
+							<ul id="1ad9f78a-31aa-456c-bde9-02a335adf8e0" class="bulleted-list">
+								<li style="list-style-type:circle">Added crosshair previews</li>
+							</ul>
+							<p id="00f69373-af2b-439d-9fba-e87e987aa57a" class=""><strong>Crosshair editor</strong></p>
+							<ul id="78bc514f-7e0f-45e8-a984-5d1beaa3534b" class="bulleted-list">
+								<li style="list-style-type:circle">Added pen width</li>
+							</ul>
+							<ul id="337c3ba8-bdef-40b1-9dd5-0b79251ff84a" class="bulleted-list">
+								<li style="list-style-type:circle">Added fill tool</li>
+							</ul>
+							<ul id="847a4bf8-ef32-4b19-b457-16f0acc5fdc1" class="bulleted-list">
+								<li style="list-style-type:circle">Added scroll to zoom</li>
+							</ul>
+							<ul id="7b9f8ccb-aa86-46e9-a7e1-150df6a1ba58" class="bulleted-list">
+								<li style="list-style-type:circle">Added click and drag positioning</li>
+							</ul>
+						</li>
+					</ul>
+					<ul id="2c8748c3-6808-4b5c-b7b8-10c436c6c2bd" class="bulleted-list">
+						<li style="list-style-type:disc">Added <code>Only Display When Holding Bow/Crossbow</code> to
+							<code>Arrow Counter</code></li>
+					</ul>
+					<ul id="1224b679-2fbb-40fd-a2e8-812c4cba7b82" class="bulleted-list">
+						<li style="list-style-type:disc">Added <code>Don&#x27;t Display If No Arrows</code> to
+							<code>Arrow Counter</code></li>
+					</ul>
+					<ul id="ff66599b-3470-4d6b-8fbd-24ce19b61f89" class="bulleted-list">
+						<li style="list-style-type:disc">Added <code>Added Don&#x27;t Display If No Pots/Soups</code> to
+							<code>Potion Counter</code></li>
+					</ul>
+					<ul id="d05012df-3b18-4656-af9e-62a775f8a441" class="bulleted-list">
+						<li style="list-style-type:disc">Added <code>Always Center</code> setting to
+							<code>Compass</code></li>
+					</ul>
+					<ul id="af27d6ab-c25e-4588-9df7-b29c6ec6f467" class="bulleted-list">
+						<li style="list-style-type:disc">Added a height offset to <code>Light Overlay</code> to combat
+							snow layers</li>
+					</ul>
+					<ul id="dbe8ace4-61e7-4c70-9e1d-56d21519d963" class="bulleted-list">
+						<li style="list-style-type:disc">Added <code>Day Counter</code></li>
+					</ul>
+					<ul id="694b9b5e-5b58-45c3-959c-da38c8170149" class="bulleted-list">
+						<li style="list-style-type:disc">Added <code>Low Health Warning</code></li>
+					</ul>
+					<ul id="065de490-fb0f-4d6e-9391-4cdd01e99df2" class="bulleted-list">
+						<li style="list-style-type:disc">Added <code>Particle Multiplier</code></li>
+					</ul>
+					<ul id="99edddf6-6a3a-4fe8-978d-cb7bd997b2e9" class="bulleted-list">
+						<li style="list-style-type:disc">Added <code>AutoGG</code> again<ul
+								id="aef6e545-d715-41eb-8dac-8da0ceefda60" class="bulleted-list">
+								<li style="list-style-type:circle">Works on:<ul
+										id="00841828-8f53-4bfa-b8d5-4336bc8f4892" class="bulleted-list">
+										<li style="list-style-type:square">Hive</li>
+									</ul>
+									<ul id="fadc337e-a5ae-417b-9e16-7b24dac3397b" class="bulleted-list">
+										<li style="list-style-type:square">Hyperlands</li>
+									</ul>
+									<ul id="ae1400f7-5343-4bd4-8899-ad778179fbac" class="bulleted-list">
+										<li style="list-style-type:square">Cubecraft</li>
+									</ul>
+									<ul id="3343604d-249b-42ce-8b0f-5c7dc122e6b3" class="bulleted-list">
+										<li style="list-style-type:square">Zeqa</li>
+									</ul>
+									<ul id="c69eb488-ad56-4916-a985-ca5e7d7574c7" class="bulleted-list">
+										<li style="list-style-type:square">Nethergames</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<h2 id="8865ac00-0047-437f-b083-3ea751a5bf28" class="">HUD</h2>
+					<ul id="e4e7da49-2548-4c88-bb83-55155d0c4591" class="bulleted-list">
+						<li style="list-style-type:disc">Revamped a LOT of UI</li>
+					</ul>
+					<ul id="d53c727e-f7de-4c86-93bc-8dce03bc1402" class="bulleted-list">
+						<li style="list-style-type:disc">Added Scroll To Scale in the HUD editor</li>
+					</ul>
+					<ul id="d153ccc5-a9f5-450b-990c-c18f71a37f84" class="bulleted-list">
+						<li style="list-style-type:disc">Removed the scaling arrow in HUD editor</li>
+					</ul>
+					<ul id="53279b05-1f94-42b1-8c26-d3142b227f7f" class="bulleted-list">
+						<li style="list-style-type:disc">Added <code>Don’t Hide HUD In F1</code> setting to global
+							settings</li>
+					</ul>
+					<ul id="f8ad0a9b-6ab5-4108-9b3f-e2d8c5475040" class="bulleted-list">
+						<li style="list-style-type:disc">Rewrote the code for the scrollbar! Enjoy the new one :)</li>
+					</ul>
+					<ul id="71300a2f-2204-4fc2-a188-9367a6ca1623" class="bulleted-list">
+						<li style="list-style-type:disc">Added Theme presets</li>
+					</ul>
+					<ul id="20dfb72c-1e04-4256-84a4-9f3fbdd76534" class="bulleted-list">
+						<li style="list-style-type:disc">Added Chroma presets</li>
+					</ul>
+					<ul id="2538289b-38a6-46a6-9d15-82769bb99260" class="bulleted-list">
+						<li style="list-style-type:disc">Changed Notifications to be round</li>
+					</ul>
+					<ul id="2464be29-2efe-4483-83ef-6a33e24c1492" class="bulleted-list">
+						<li style="list-style-type:disc">There is now a new default config</li>
+					</ul>
+					<ul id="069f3227-1e97-4944-8a88-ebf3a357efba" class="bulleted-list">
+						<li style="list-style-type:disc">Added <code>Outline</code> to text modules</li>
+					</ul>
+					<h2 id="28bce7ae-21fd-4115-bf3e-1027ca602afd" class="">Bug fixes</h2>
+					<ul id="e6172368-49fe-483a-8c8e-d28017f6bf42" class="bulleted-list">
+						<li style="list-style-type:disc">Fixed a Keystrokes bug where only one input could be recognised
+						</li>
+					</ul>
+					<ul id="20e0cbcb-8c78-4e3e-8e28-94a3fb049fd9" class="bulleted-list">
+						<li style="list-style-type:disc">Fixed NBT <code>savef</code> functioning incorrectly if the
+							item does not have a tag</li>
+					</ul>
+					<ul id="d842ed2e-fa9a-451e-b816-cb116a345574" class="bulleted-list">
+						<li style="list-style-type:disc">Fixed TNT Timer not displaying anything</li>
+					</ul>
+					<ul id="ee7b92a8-9eed-4d89-88c1-8ad4e7ef9105" class="bulleted-list">
+						<li style="list-style-type:disc">Fixed <code>.give</code> not functioning correctly on 1.16.40
+						</li>
+					</ul>
+					<ul id="8224028d-a05b-4c90-b1b2-0165faaec1b7" class="bulleted-list">
+						<li style="list-style-type:disc">Fixed 1.17.41 crashing on inject</li>
+					</ul>
+					<ul id="09418a37-9f45-4d0e-a118-d526496e771c" class="bulleted-list">
+						<li style="list-style-type:disc">Fixed a bug where resizing with the <code>ClickGUI</code> open
+							would force you to <code>Global Settings</code></li>
+					</ul>
+					<ul id="c933878e-c5de-4cd3-9e98-8bec8137757b" class="bulleted-list">
+						<li style="list-style-type:disc">Fixed <code>Insert</code> not opening the <code>ClickGUI</code>
+							in when the HUD was hidden</li>
+					</ul>
+					<ul id="65c7979f-33b1-4b6b-b7a7-931c548e2cd8" class="bulleted-list">
+						<li style="list-style-type:disc">Fixed <code>Show Indicator</code> not working in
+							<code>Toggle Sprint/Sneak</code> settings</li>
+					</ul>
+					<ul id="0f699f1f-c0e1-4d67-952b-d875c7ae59ec" class="bulleted-list">
+						<li style="list-style-type:disc">Fixed a bug where module toggles would function incorrectly
+							when you right clicked and then clicked the toggle or vice versa</li>
+					</ul>
+					<ul id="71ac207d-f52c-402f-9a52-b585666c4c59" class="bulleted-list">
+						<li style="list-style-type:disc">Fixed a bug where when leaving the UI, precision selected
+							sliders would not unfocus if they were focused when you left</li>
+					</ul>
+					<ul id="b442909d-b801-4dd6-8ef5-7ecbf8667f0d" class="bulleted-list">
+						<li style="list-style-type:disc">Fixed <code>Combo Counter</code> functioning incorrectly</li>
+					</ul>
+					<h2 id="625a892c-4b8b-472d-9d6f-011800708c26" class="">Miscellaneous</h2>
+					<ul id="2bc70224-42e4-4643-a5a0-e6e9ece29c98" class="bulleted-list">
+						<li style="list-style-type:disc">Added Mouse Button 5 &amp; 6 support to keybinds</li>
+					</ul>
+					<ul id="8de4cedc-53da-4714-bf1d-6f88953db7c2" class="bulleted-list">
+						<li style="list-style-type:disc"><code>Color Options</code> no longer has an enabled/disabled
+							button</li>
+					</ul>
+					<ul id="3feac814-d042-43c6-b174-03745b1df821" class="bulleted-list">
+						<li style="list-style-type:disc"><code>Adapt Module Position</code> now has priority loading
+						</li>
+					</ul>
+					<ul id="66d76e1b-dcc1-4891-9b4a-750cef55bc7a" class="bulleted-list">
+						<li style="list-style-type:disc">Added <code>.directory</code> command</li>
+					</ul>
+					<ul id="d01f9d0b-b7a7-4766-b71a-b3a8f78f0edf" class="bulleted-list">
+						<li style="list-style-type:disc">Added <code>Expand Direction</code> setting for better module
+							alignment</li>
+					</ul>
+					<ul id="93727613-75f1-4aee-8416-bb2e3b86392f" class="bulleted-list">
+						<li style="list-style-type:disc">Added setting to Hide/Show “You are up to date!” when you
+							inject</li>
+					</ul>
+					<ul id="40102b65-687a-4a22-9a3e-2f590313996e" class="bulleted-list">
+						<li style="list-style-type:disc">Improved the <code>Freelook</code> head-rotation glitch - can’t
+							get you banned from servers anymore</li>
+					</ul>
+					<ul id="a77d0531-973a-4c4c-bcdd-005dd2b70c4a" class="bulleted-list">
+						<li style="list-style-type:disc">Added <code>Show Chat Message</code> setting to
+							<code>Screenshot</code> settings</li>
+					</ul>
+					<ul id="9cf40496-8ab8-4c11-93c0-47fcefff67e0" class="bulleted-list">
+						<li style="list-style-type:disc">Added <code>Stop All Momentum</code> key in
+							<code>Creative Tools</code></li>
+					</ul>
+				</div>
+			</article>
+		</body>
+
+</html>
+</div>
+<footer>
+	<div>
 		<style>
 			hr {
-  background: rgb(100, 100, 100);
-  display: block;
-  width: 100%;
-  height: 1px;
-  visibility: visible;
-  border: none;
-    border-bottom-color: currentcolor;
-    border-bottom-style: none;
-    border-bottom-width: medium;
-  border-bottom: 1px solid rgba(55, 53, 47, 0.09);
-}
+				background: rgb(100, 100, 100);
+				display: block;
+				width: 100%;
+				height: 1px;
+				visibility: visible;
+				border: none;
+				border-bottom-color: currentcolor;
+				border-bottom-style: none;
+				border-bottom-width: medium;
+				border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+			}
 		</style>
-            <br>
-            <br>
-            <hr>
-		<p>Thanks Notion <3</p>
-		<p>Copyright © 2023 Onix Client</p>
-        </div>
-    </footer>
-	</body>
+		<br>
+		<br>
+		<p>Thanks Notion <3< /p>
+				<hr>
+				<p>Copyright © 2023 Onix Client</p>
+	</div>
+</footer>
+</body>
+
 </html>
