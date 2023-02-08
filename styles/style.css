@@ -181,7 +181,7 @@ footer {
 }
 
 .name {
-  float: right;
+  float: left;
   font-family: 'Poppins', sans-serif;
   font-size: 30px;
   font-weight: 700;
