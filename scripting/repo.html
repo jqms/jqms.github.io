@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Onix Client Script Downloader</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins" />
+    <link rel="icon" href="../favicon.ico" />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <style>
+        html {
+            background: linear-gradient(180deg, #181818, #212121);
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(180deg, #181818, #212121);
+        }
+
+        .button-container {
+            background-color: #282828;
+            border-radius: 15px;
+            padding: 10px;
+            margin: 15px;
+            width: 200px;
+            height: 200px;
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.2s ease-in-out;
+            position: relative;
+            border-style: solid;
+            border-width: 1px;
+        }
+
+        .button-container:hover {
+            background-color: #383838;
+            transform: scale(1.05);
+            border-color: #8a8a8a;
+        }
+
+        .button-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .button-description {
+            font-size: 16px;
+            color: #a6a6a6;
+            overflow: auto;
+            text-align: center;
+            height: 500px;
+        }
+
+        .button-download {
+            display: flex;
+            color: #fff;
+            text-decoration: none;
+            padding: 7.5px;
+            background-color: #3e458e;
+            border-radius: 10px;
+            transition: all 0.2s ease-in-out;
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            opacity: 0;
+            z-index: 2;
+            /* transform: translateX(175%); */
+            height: 30px;
+            width: 30px;
+        }
+
+        .download-button-tooltip {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #252525;
+            border-radius: 5px;
+            padding: 2px;
+            opacity: 0;
+            font-size: 10px;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .button-container:hover .button-download {
+            opacity: 1;
+        }
+
+        .button-download:hover {
+            background-color: rgb(47, 51, 121);
+            transform:
+                /* translateX(175%) */ 
+                scale(1.05);
+        }
+
+        .button-download:hover .download-button-tooltip {
+            opacity: 1;
+        }
+
+        .button-openfile {
+            display: flex;
+            color: #fff;
+            text-decoration: none;
+            padding: 7.5px;
+            background-color: #3e458e;
+            border-radius: 10px;
+            transition: all 0.2s ease-in-out;
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            opacity: 0;
+            z-index: 2;
+            /* transform: translateX(-175%); */
+            height: 30px;
+            width: 30px;
+        }
+        .button-container:hover .button-openfile {
+            opacity: 1;
+        }
+        .button-openfile:hover {
+            background-color: rgb(47, 51, 121);
+            transform: translateX(-175%) scale(1.05);
+        }
+
+        .button-openfile:hover .openfile-button-tooltip {
+            opacity: 1;
+        }
+
+        .openfile-button-tooltip {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #252525;
+            border-radius: 5px;
+            padding: 2px;
+            opacity: 0;
+            font-size: 10px;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .button-container:hover .button-openfile {
+            opacity: 1;
+        }
+
+        .button-openfile:hover {
+            background-color: rgb(47, 51, 121);
+            transform:
+                /* translateX(-175%) */
+                scale(1.05);
+        }
+
+        .grid-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scrollToTopButton {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #383b5b;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease-in-out;
+            opacity: 0;
+            z-index: 2;
+        }
+
+        .scrollToTopButton:hover {
+            background-color: rgb(47, 51, 121);
+            transform: scale(1.05);
+        }
+
+        .searchBar {
+            width: 25%;
+            height: 20px;
+            border-radius: 10px;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+            margin: 15px;
+            background-color: #d1d1d1;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .searchBar:focus {
+            outline: none;
+            background-color: #a6a6a6;
+        }
+
+        .searchBar::placeholder {
+            color: #000000;
+            opacity: 0.75;
+        }
+
+        .searchBar:focus::placeholder {
+            color: #000000;
+            opacity: 1;
+        }
+
+        .searchBar:hover {
+            transform: scale(1.05);
+        }
+
+        .searchBar:focus {
+            transform: scale(1.05);
+        }
+
+        #buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .white {
+            color: #fff;
+        }
+
+        .scriptTutorial {
+            font-size: 16px;
+            margin: 15px;
+            transition: all 0.2s ease-in-out;
+            padding: 5px;
+            margin-top: 0px;
+            padding-top: 0px;
+            border-radius: 15px;
+            background-color: #383b5b;
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scriptTutorial:hover {
+            transform: scale(1.05);
+        }
+/* đđđđđđđđđđđđđđđđđđđ */
+        iframe {
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="topbar">
+        <div class="logothing">
+            <a href="https://onixclient.com">
+                <img src="../assets/biglogo.png" width="45" height="45" alt="logo" />
+                <span class="name"> ONIX CLIENT </span>
+            </a>
+        </div>
+        <span class="navbar">
+            <a href="https://onixclient.com">Home</a>
+            <a href="../faq">FAQ</a>
+            <a href="../license">License</a>
+            <a href="https://onixclient.com/patreon" target="_blank" rel="noopener noreferrer">Donate</a>
+            <a href="https://docs.onixclient.com" target="_blank" rel="noopener noreferrer">Scripting</a>
+            <a href="../download" class="download">Download</a>
+        </span>
+    </div>
+    <br /><br /><br />
+    <h1>
+        <div class="center">
+            <span class="white bold">Onix Client Script Downloader</span>
+        </div>
+    </h1>
+    <div class="center">
+        <span class="white">
+            Click on the script you want to download.
+            <br>
+        </span>
+    </div>
+    <div class="center">
+        <span class="white">
+            <a href="https://onixclient.com/patreon" target="_blank">
+                <span class="bold">Requires an Onix Client Patreon subscription.</span>
+            </a>
+            <br /><br />
+        </span>
+    </div>
+    <div class = "center">
+        <div class="scriptTutorial">
+            <center>
+                <p>Tutorial on how to install scripts:</p>
+            </center>
+           <iframe width="560" height="315" src="https://onixclient.com/assets/How%20To%20Install%20Scripts.mp4"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        </div>
+    </div>
+    <hr />
+    <div class="center">
+        <input type="text" class="searchBar" placeholder="Search..." />
+    </div>
+    <br />
+    <script>
+        window.onscroll = () =>
+        (document.querySelector(".scrollToTopButton").style.opacity = +(
+            document.documentElement.scrollTop > 20 || document.body.scrollTop > 20
+        ));
+    </script>
+    <div class="grid-container">
+        <div id="buttons">
+            <script>
+                fetch("https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/index.json")
+                    .then((response) => response.json())
+                    .then((data) => {
+                        const modules = data.modules.filter((module) => module.name && module.file && !module.lib && !module.autocomplete);
+
+                        // scroll to top button
+                        const scrollToTopButton = document.createElement("div");
+                        scrollToTopButton.classList.add("scrollToTopButton");
+                        scrollToTopButton.innerHTML = `<img src="../assets/scrolltotoplogo.png" width="30" height="30">`;
+                        scrollToTopButton.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+                        document.body.appendChild(scrollToTopButton);
+
+                        const searchInput = document.querySelector(".searchBar");
+                        searchInput.addEventListener("keyup", (e) => {
+                            const searchString = e.target.value.toLowerCase();
+
+                            const filteredModules = modules.filter((module) => 
+                                module.name.toLowerCase().includes(searchString) || module.description.toLowerCase().includes(searchString)
+                            );
+
+                            displayModules(filteredModules);
+                        });
+
+                        modules.forEach(async (module) => {
+                            const buttonContainer = document.createElement("div");
+                            buttonContainer.classList.add("button-container");
+
+                            const buttonName = document.createElement("div");
+                            buttonName.classList.add("button-text");
+                            buttonName.textContent = module.name;
+                            buttonName.textContentUnmodified = module.name;
+                            if (buttonName.textContent.length > 13) {
+                                buttonName.textContent = buttonName.textContent.substring(0, 13);
+                                buttonName.textContent += "...";
+                            }
+                            buttonContainer.appendChild(buttonName);
+
+                            const buttonDescription = document.createElement("div");
+                            buttonDescription.classList.add("button-description");
+                            buttonDescription.textContent = module.description;
+                            buttonContainer.appendChild(buttonDescription);
+
+                            const buttonDownload = document.createElement("a");
+                            buttonDownload.classList.add("button-download");
+                            const data = await fetch(`https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/${module.file}`)
+                                .then((response) => response.text())
+                                // .then((data) => {
+                                //     buttonDownload.href = `data:text/plain;charset=utf-8,${encodeURIComponent(data)}`;
+                                //     buttonDownload.download = module.file;
+                                // });
+                            buttonDownload.href = `data:text/plain;charset=utf-8,${encodeURIComponent(data)}`;
+                            buttonDownload.download = module.file;
+                            const buttonDownloadText = document.createElement("span");
+                            buttonDownloadText.innerHTML = `<img src="../assets/downloadlogo.png" width="30" height="30">`;
+                            buttonDownload.appendChild(buttonDownloadText);
+                            buttonContainer.appendChild(buttonDownload);
+                            const buttonDownloadTooltip = document.createElement("div");
+                            buttonDownloadTooltip.classList.add("download-button-tooltip");
+                            buttonDownloadTooltip.textContent = "Download";
+                            buttonDownload.appendChild(buttonDownloadTooltip);
+
+                            const buttonOpenFile = document.createElement("a");
+                            buttonOpenFile.classList.add("button-openfile");
+                            buttonOpenFile.href = module.url;
+                            buttonOpenFile.download = module.file;
+                            buttonOpenFile.target = "_blank";
+                            const buttonOpenFileText = document.createElement("span");
+                            buttonOpenFileText.innerHTML = `<img src="../assets/openfilelogo.png" width="30" height="30">`;
+                            buttonOpenFile.appendChild(buttonOpenFileText);
+                            const buttonOpenFileTooltip = document.createElement("div");
+                            buttonOpenFileTooltip.classList.add("openfile-button-tooltip");
+                            buttonOpenFileTooltip.textContent = "Open";
+                            buttonOpenFile.appendChild(buttonOpenFileTooltip);
+                            buttonContainer.appendChild(buttonOpenFile);
+
+                            document.querySelector("#buttons").appendChild(buttonContainer);
+                        });
+                        // search bar
+                        const searchBar = document.querySelector(".searchBar");
+                        searchBar.addEventListener("keyup", (e) => {
+                            const searchString = e.target.value.toLowerCase();
+                            const buttons = document.querySelectorAll(".button-container");
+                            const buttonsArray = Array.from(buttons);
+                            buttonsArray.forEach((button) => {
+                                const buttonName = button.querySelector(".button-text").textContentUnmodified;
+                                button.style.display = buttonName.toLowerCase().includes(searchString) ? "block" : "none";
+                            });
+                        });
+                    })
+                    .catch((error) => console.error(error));
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>
