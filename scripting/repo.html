@@ -8,10 +8,11 @@
     <link rel="icon" href="../favicon.ico" />
     <link rel="stylesheet" href="../styles/style.css" />
     <meta content="Onix Client Script Repository" property="og:title">
-	<meta content="https://onixclient.com/scripting/repo" property="og:url">
-	<meta content="The Onix Client scripting repository for all scripts on the github repository, but in website form." property="og:description">
-	<meta content="https://onixclient.com/assets/scriptrepo.png" property="og:image">
-	<meta content="#008FC1" data-react-helmet="true" name="theme-color">
+    <meta content="https://onixclient.com/scripting/repo" property="og:url">
+    <meta content="The Onix Client scripting repository for all scripts on the github repository, but in website form."
+        property="og:description">
+    <meta content="https://onixclient.com/assets/scriptrepo.png" property="og:image">
+    <meta content="#008FC1" data-react-helmet="true" name="theme-color">
     <style>
         html {
             background: linear-gradient(180deg, #181818, #212121);
@@ -99,7 +100,7 @@
         .button-download:hover {
             background-color: rgb(47, 51, 121);
             transform:
-                /* translateX(175%) */ 
+                /* translateX(175%) */
                 scale(1.05);
         }
 
@@ -124,9 +125,11 @@
             height: 30px;
             width: 30px;
         }
+
         .button-container:hover .button-openfile {
             opacity: 1;
         }
+
         .button-openfile:hover {
             background-color: rgb(47, 51, 121);
             transform: translateX(-175%) scale(1.05);
@@ -263,7 +266,8 @@
         .scriptTutorial:hover {
             transform: scale(1.05);
         }
-/* đđđđđđđđđđđđđđđđđđđ */
+
+        /* đđđđđđđđđđđđđđđđđđđ */
         iframe {
             border-radius: 10px;
         }
@@ -307,14 +311,14 @@
             <br /><br />
         </span>
     </div>
-    <div class = "center">
+    <div class="center">
         <div class="scriptTutorial">
             <center>
                 <p>Tutorial on how to install scripts:</p>
             </center>
-           <iframe width="560" height="315" src="https://onixclient.com/assets/How%20To%20Install%20Scripts.mp4"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/R21GLHJphtg"
+                title="How To Install Scripts | Onix Client V3" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen></iframe>
         </div>
     </div>
@@ -348,7 +352,7 @@
                         searchInput.addEventListener("keyup", (e) => {
                             const searchString = e.target.value.toLowerCase();
 
-                            const filteredModules = modules.filter((module) => 
+                            const filteredModules = modules.filter((module) =>
                                 module.name.toLowerCase().includes(searchString) || module.description.toLowerCase().includes(searchString)
                             );
 
@@ -378,10 +382,10 @@
                             buttonDownload.classList.add("button-download");
                             const data = await fetch(`https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/${module.file}`)
                                 .then((response) => response.text())
-                                // .then((data) => {
-                                //     buttonDownload.href = `data:text/plain;charset=utf-8,${encodeURIComponent(data)}`;
-                                //     buttonDownload.download = module.file;
-                                // });
+                            // .then((data) => {
+                            //     buttonDownload.href = `data:text/plain;charset=utf-8,${encodeURIComponent(data)}`;
+                            //     buttonDownload.download = module.file;
+                            // });
                             buttonDownload.href = `data:text/plain;charset=utf-8,${encodeURIComponent(data)}`;
                             buttonDownload.download = module.file;
                             const buttonDownloadText = document.createElement("span");
