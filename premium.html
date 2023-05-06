@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8810880028192246"
+        crossorigin="anonymous"></script>
+    <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="icon" type="onixlogo" href="favicon.ico">
+    <title>Ready for more? | Onix Client</title>
+    <meta content="Ready for more? | Onix Client" property="og:title">
+    <meta content="https://onixclient.com/premium" property="og:url">
+    <meta content="Level up your Onix Client experience." property="og:description">
+    <meta content="https://onixclient.com/assets/biglogo.png" property="og:image">
+    <meta content="#008FC1" data-react-helmet="true" name="theme-color">
+</head>
+<style>
+    html {
+        scroll-behavior: smooth;
+        background: black;
+    }
+
+    body {
+        font-family: "Poppins", sans-serif;
+        background: black;
+    }
+
+    * {
+        scrollbar-color: #757575 #0f0f0f;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    ::-webkit-scrollbar {
+        background-color: #000000;
+        border-color: #000000;
+    }
+
+    section {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    #home {
+        background-image: url("premiumImage.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    #home .premiumImage {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: all 1s ease-out;
+    }
+
+    #home .premiumImage img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+    }
+
+
+
+    #home .glowy {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 500px;
+        /* change to your desired width */
+        height: 300px;
+        /* change to your desired height */
+        z-index: 1;
+    }
+
+    #home .glowy img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 1;
+    }
+
+
+    .scroll-down {
+        display: block;
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #1b1464;
+        border-image: 2px solid linear-gradient(180deg, #1e87d3, #02feda);
+        cursor: pointer;
+        box-shadow: 0 0 10px #1b1464;
+        transition: all 0.3s ease;
+        opacity: 0;
+    }
+
+    .scroll-down:hover {
+        background-color: #201a63;
+        box-shadow: 0 0 10px #201a63;
+    }
+
+    .scroll-down::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 10px 7px 0 7px;
+        border-color: #ffffff transparent transparent transparent;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+        padding: 0 20px;
+    }
+
+    h2 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+    }
+
+    .button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        transition: transform 0.3s ease-in-out;
+        box-shadow: 0 0 10px #3e8e41;
+    }
+
+    .button:hover {
+        background-color: #3e8e41;
+        transform: scale(1.05);
+    }
+
+    footer {
+        background-color: #222;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+
+    footer p {
+        font-size: 1.2rem;
+    }
+
+    #home .overlay h1 {
+        font-size: 5rem;
+        color: #fff;
+        margin-bottom: 30px;
+    }
+
+    #reason1 {
+        background-color: #fff;
+    }
+
+    #reason2 {
+        background-color: #f5f5f5;
+    }
+
+    #reason3 {
+        background-color: #e0e0e0;
+    }
+
+    #reason4 {
+        background-color: #d1d1d1;
+    }
+
+    .reason-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 50px 0;
+    }
+
+    .reason-container h2 {
+        margin-bottom: 20px;
+    }
+
+    .reason-container p {
+        margin-bottom: 30px;
+    }
+
+    .reason-container img {
+        max-width: 80%;
+    }
+
+    .purchase-container {
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 50px 0;
+    }
+
+    .purchase-container h2 {
+        margin-bottom: 20px;
+    }
+
+    .purchase-container p {
+        margin-bottom: 30px;
+        font-size: 1.5rem;
+    }
+
+    .purchase-container a {
+        margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+        h2 {
+            font-size: 2rem;
+        }
+
+        p {
+            font-size: 1rem;
+        }
+
+        .reason-container p {
+            font-size: 1.2rem;
+        }
+
+        .reason-container img {
+            max-width: 100%;
+        }
+
+        .purchase-container p {
+            font-size: 1.2rem;
+        }
+    }
+
+    /* Styles for small devices */
+
+    @media screen and (max-width: 600px) {
+        h2 {
+            font-size: 2rem;
+        }
+
+        p {
+            font-size: 1rem;
+        }
+
+        .reason-container p {
+            font-size: 1.2rem;
+        }
+
+        .reason-container img {
+            max-width: 100%;
+        }
+
+        .purchase-container p {
+            font-size: 1.2rem;
+        }
+
+        .scroll-down {
+            display: none;
+        }
+    }
+
+    button {
+        background-color: rgba(100, 100, 100, 0);
+        border: none;
+        color: rgba(255, 255, 255, 255);
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        cursor: pointer;
+        border-radius: 12px;
+        padding-top: -20px;
+        padding-bottom: -20px;
+        height: 50px;
+    }
+
+    .notification {
+        color: white;
+        text-decoration: none;
+        padding: 15px 26px;
+        position: relative;
+        display: inline-block;
+        border-radius: 15px;
+        transition: all 0.3s ease-in-out;
+        backdrop-filter: blur(30px);
+        -webkit-backdrop-filter: blur(30px);
+    }
+</style>
+
+<body>
+    <br><br><br>
+    <section id="home">
+        <div class="overlay">
+            <div class="premiumImage">
+                <img src="assets/premiumImage.png" alt="Premium Image" />
+            </div>
+            <div class="glowy">
+                <img src="assets/logoGlowy.png" alt="Logo" />
+            </div>
+            <a href="#ui" class="scroll-down"></a>
+        </div>
+    </section>
+
+    <section id="ui">
+        <div class="container">
+            <button id="newUIButton">
+                <h2>Sleek New UI</h2>
+            </button>
+            <p>Our new UI is a lot more modern and sleek than the old one. It's also a lot more user friendly and easier
+                to navigate.</p>
+        </div>
+        <a href="#features" class="scroll-down"></a>
+    </section>
+
+    <section id="features">
+        <div class="container">
+            <button id="featuresButton">
+                <h2>More Features</h2>
+            </button>
+            <p>Onix Client Premium has significantly more features!</p>
+            <img src="assets/features.png" alt="Features" />
+            <p>You can find a list of all the premium features <a
+                    href="https://onixclient.com/features#premium">here</a>.</p>
+        </div>
+        <a href="#updates" class="scroll-down"></a>
+    </section>
+
+    <section id="updates">
+        <div class="container">
+            <button id="updatesButton">
+                <h2>Frequent Updates</h2>
+            </button>
+            <p>Onix Client Premium has frequent updates to ensure that you have the best experience possible.</p>
+        </div>
+        <a href="#purchase" class="scroll-down"></a>
+    </section>
+
+    <section id="purchase">
+        <div class="container">
+            <h2>Purchase Onix Client</h2>
+            <p>Purchase Onix Client Premium to get access to all of the features listed above and more!</p>
+            <p>Onix Client Premium is only $4.01/month!</p>
+            <a href="https://onixclient.com/patreon" class="button">Buy Now</a>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+
+        hasClicked = false;
+        let newUIButton = document.getElementById('newUIButton');
+        newUIButton.addEventListener('click', () => {
+            hasClickedButton("ui");
+        });
+        let featuresButton = document.getElementById('featuresButton');
+        featuresButton.addEventListener('click', () => {
+            hasClickedButton("features");
+        });
+        let updatesButton = document.getElementById('updatesButton');
+        updatesButton.addEventListener('click', () => {
+            hasClickedButton("updates");
+        });
+
+        function hasClickedButton(buttonType) {
+            if (hasClicked == false) {
+                hasClicked = true;
+                // copy anchor link to clipboard
+                let dummy = document.createElement('input')
+                if (window.location.href.indexOf('#') == -1) {
+                    var text = window.location.href + '#' + buttonType;
+                } else {
+                    var text = window.location.href.substring(0, window.location.href.indexOf('#')) + '#' + buttonType;
+                }
+                document.body.appendChild(dummy);
+                dummy.value = text;
+                dummy.select();
+                document.execCommand('copy');
+                document.body.removeChild(dummy);
+
+                // show a notification at the bottom right 
+                let notification = document.createElement('a');
+                notification.classList.add('notification');
+                notification.innerHTML = 'Copied to clipboard!';
+                notification.href = '#';
+                document.body.appendChild(notification);
+
+                // set the notification to appear at the bottom right corner of the screen and slide in from the right
+                notification.style.position = 'fixed';
+                notification.style.bottom = '20px';
+                notification.style.right = '-300px';
+                notification.style.transition = 'all 0.25s ease-in-out';
+                setTimeout(() => {
+                    notification.style.right = '20px';
+                }, 100);
+
+                // hide the notification after a few seconds
+                setTimeout(() => {
+                    notification.style.right = '-300px';
+                    setTimeout(() => {
+                        document.body.removeChild(notification);
+                    }, 500);
+                    hasClicked = false;
+                }, 2000);
+            }
+        }
+
+        function spinLogoOnStartup() {
+            let logo = document.querySelector('.glowy');
+            logo.style.transform = 'rotate(360deg) scale(1.1)';
+            logo.style.transition = 'transform 1s ease-in-out';
+            logo.style.transformOrigin = 'center';
+            setTimeout(() => {
+                logo.style.transform = 'rotate(-380deg) scale(1)';
+                logo.style.transition = 'transform 1s ease-in-out';
+                logo.style.transformOrigin = 'center';
+                setTimeout(() => {
+                    logo.style.transform = 'rotate(-360deg) scale(1)';
+                    logo.style.transition = 'transform 0.25s ease-in-out';
+                    logo.style.transformOrigin = 'center';
+                }, 1010);
+            }, 1000);
+        }
+
+        function showScrollDownButton() {
+            for (let i = 0; i < document.querySelectorAll('.scroll-down').length; i++) {
+                document.querySelectorAll('.scroll-down')[i].style.opacity = '1';
+            }
+        }
+
+        function showBackground() {
+            document.querySelector('.premiumImage').style.opacity = '0.75';
+        }
+
+        window.addEventListener('load', () => {
+            // check if there is no anchor link in the URL
+            if (window.location.href.indexOf('#') == -1) {
+                // scroll to the top of the page
+                if (window.scrollY == 0) {
+                    scrollSlightly(100);
+                }
+                spinLogoOnStartup();
+                setTimeout(() => {
+                    showScrollDownButton();
+                }, 2000);
+            } else {
+                // scroll to the anchor link
+                let target = window.location.href.split('#')[1];
+                let targetOffset = document.getElementById(target).offsetTop;
+                window.scrollTo(0, targetOffset);
+                // show the scroll down button
+                showScrollDownButton();
+            }
+            setTimeout(() => {
+                showBackground();
+            }, 1000);
+        });
+
+        $(document).ready(function () {
+            // Smooth scrolling effect for the "scroll down" buttons
+            $(".scroll-down").click(function (event) {
+                event.preventDefault(); // Prevent default anchor behavior
+
+                let target = $(this).attr("href"); // Get the target section ID
+                let targetOffset = $(target).offset().top;
+
+                $("html, body").animate({
+                    scrollTop: targetOffset
+                }, 1000, 'swing');
+            });
+
+            // Fade in effect for the sections when scrolling down
+            $(window).scroll(function () {
+                $(".fade-in").each(function () {
+                    let bottom_of_window = $(window).scrollTop() + $(window).height();
+                    let bottom_of_object = $(this).offset().top + $(this).outerHeight();
+
+                    if (bottom_of_window > bottom_of_object) {
+                        $(this).animate({ "opacity": "1" }, 1000);
+                    }
+                });
+            });
+
+            // Open the link to purchase Onix Client
+            $("#purchase-btn").click(function () {
+                window.open("https://onixclient.com/patreon");
+            });
+        });
+
+        function scrollSlightly(distance) {
+            window.scroll({
+                top: window.pageYOffset + distance,
+                behavior: 'smooth'
+            });
+        }
+
+    </script>
+</body>
+
+</html>

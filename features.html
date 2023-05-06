@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8810880028192246"
+        crossorigin="anonymous"></script>
+    <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="icon" type="onixlogo" href="favicon.ico">
+    <title>Onix Client</title>
+    <meta content="Onix Client" property="og:title">
+    <meta content="https://onixclient.com" property="og:url">
+    <meta content="Onix Client is a legitimate client for Minecraft: Bedrock Edition.
+          With over 40 fully customisable, built-in modules, and over 75 fully customisable, community-made modules.
+          Onix Client is truly the best client for Minecraft: Bedrock Edition." property="og:description">
+    <meta content="https://onixclient.com/assets/biglogo.png" property="og:image">
+    <meta content="#008FC1" data-react-helmet="true" name="theme-color">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <div class="topbar">
+        <div class="logothing">
+            <a href="https://onixclient.com">
+                <img src="assets/biglogo.png" width="45" height="45" alt="logo">
+                <span class="name">
+                    ONIX CLIENT
+                </span>
+            </a>
+        </div>
+        <span class="navbar">
+            <a href="https://onixclient.com" class="active">Home</a>
+            <a href="faq">FAQ</a>
+            <a href="license">License</a>
+            <a href="https://onixclient.com/patreon" target="_blank" rel="noopener noreferrer">Donate</a>
+            <a href="https://docs.onixclient.com" target="_blank" rel="noopener noreferrer">Scripting</a>
+            <a href="download" class="download">Download</a>
+        </span>
+    </div>
+    <section id="free">
+        <div class="v2">
+            <br><br>
+            <div class="v2-text">
+                <h1>Free Features</h1>
+                <h4>V2 features available to all on 1.19.81 and below (except incompatible ones).</h4>
+                <button onclick="toggleFeatures()" class="dropdown-btn">
+                    V2 Features
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <ul id="feature-list" style="display: block;">
+                    <li>Armour HUD</li>
+                    <li>Audio Subtitles (1.18.30-)</li>
+                    <li>AutoGG</li>
+                    <li>Block Outline/Overlay</li>
+                    <li>CPS Counter</li>
+                    <li>Chunk Borders</li>
+                    <li>Clock</li>
+                    <li>Combo Counter</li>
+                    <li>Coordinates</li>
+                    <li>Creative Tools</li>
+                    <li>Custom Crosshairs</li>
+                    <li>Direction HUD</li>
+                    <li>Environment Changer</li>
+                    <li>FPS Counter</li>
+                    <li>Flappy Bird</li>
+                    <li>Freelook (1.19.40-)</li>
+                    <li>Fullbright</li>
+                    <li>Hitboxes</li>
+                    <li>Hurt Color</li>
+                    <li>Item Physics</li>
+                    <li>Java Debug Menu</li>
+                    <li>Keystrokes</li>
+                    <li>Light Overlay</li>
+                    <li>Movable Paperdoll</li>
+                    <li>Pack Display</li>
+                    <li>Player Tab</li>
+                    <li>Potion HUD</li>
+                    <li>Reach Display</li>
+                    <li>Render Options</li>
+                    <li>Search Client Side Nick</li>
+                    <li>Server IP Display</li>
+                    <li>Snake</li>
+                    <li>Speed Display</li>
+                    <li>TNT Timer</li>
+                    <li>Theme Editor</li>
+                    <li>Third Person Nametag</li>
+                    <li>Toggle Sprint/Sneak</li>
+                    <li>Waypoints</li>
+                    <li>Zoom</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <section id="premium">
+        <div class="v3">
+            <br><br>
+            <div class="v3-text">
+                <h1>Exclusive Premium Features</h1>
+                <h4>V3 features available to all, on any version from 1.16.40-latest!</h4>
+                <button onclick="toggleV3Features()" class="dropdown-btn">
+                    V3 Features
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <ul id="v3feature-list" style="display: block;">
+                    <b>
+                        <li>Everything in V2</li>
+                        <li>Access to Scripting</li>
+                    </b>
+                    <li>Arrow Counter</li>
+                    <li>Auto Text Hotkey</li>
+                    <li>Break Progress</li>
+                    <li>Crop Protector</li>
+                    <li>Day Counter</li>
+                    <li>Dynamic Light</li>
+                    <li>GUI Scale Changer</li>
+                    <li>Global Settings</li>
+                    <li>Low Health Warning</li>
+                    <li>Motion Blur</li>
+                    <li>Movable Chat</li>
+                    <li>Movable Scoreboard</li>
+                    <li>Particle Multiplier</li>
+                    <li>Ping Display</li>
+                    <li>Potion/Soup Counter</li>
+                    <li>Snaplook</li>
+
+                    <p>& many more to come!</p>
+
+                </ul>
+                <a href="https://onixclient.com/patreon" target="_blank" rel="noopener noreferrer">
+                    <button class="donate">
+                        Purchase
+                    </button>
+                <br><br><br><br><br><br><br><br><br><br><br>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .dropdown-btn {
+            background-color: #14426d;
+            color: white;
+            padding: 10px 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .dropdown-btn:hover {
+            background-color: #325577;
+        }
+
+        .dropdown-btn i {
+            margin-left: 5px;
+        }
+
+        button {
+            background-color: #b69731;
+            color: white;
+            padding: 10px 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #c7a83f;
+        }
+    </style>
+
+    <script>
+        function toggleFeatures() {
+            var featureList = document.getElementById("feature-list");
+            if (featureList.style.display === "none" || featureList.style.display === "") {
+                featureList.style.display = "block";
+            } else {
+                featureList.style.display = "none";
+            }
+        }
+
+        function toggleV3Features() {
+            var featureList = document.getElementById("v3feature-list");
+            if (featureList.style.display === "block" || featureList.style.display === "") {
+                featureList.style.display = "none";
+            } else {
+                featureList.style.display = "block";
+            }
+        }
+
+    </script>
+
+</body>
+        <footer>
+            <div>
+                <br><br>
+                <hr>
+                <p>Copyright © 2023 Onix Client</p>
+            </div>
+        </footer>
+</html>
