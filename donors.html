@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Donation Leaderboard</title>
+  <head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8810880028192246" crossorigin="anonymous"></script>
+    <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="icon" type="onixlogo" href="favicon.ico">
+    <title>Onix Client</title>
+    <meta content="Onix Client Top Donors" property="og:title">
+    <meta content="https://discord.gg/onixclient" property="og:url">
+    <meta content="The best Minecraft: Bedrock Edition client! (Windows 10/11 only)." property="og:description">
+    <meta content="https://onixclient.com/assets/discord.png" property="og:image">
+    <meta content="#008FC1" data-react-helmet="true" name="theme-color">
+</head>
+  <style>
+    #leaderboard {
+      width: 350px;
+      margin: 0 auto;
+      font-family: 'Poppins', sand-serif;
+    }
+
+    #leaderboard h1 {
+      text-align: center;
+    }
+
+    #leaderboard ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    #leaderboard li {
+      margin-bottom: 10px;
+    }
+
+    #leaderboard .name {
+      font-weight: bold;
+    }
+
+    #leaderboard .amount {
+      float: right;
+    }
+
+    /* Custom styles for top donors (they are gold silver and bronze internally because i originally coloured them that way, but decided to change it to this)*/
+    #leaderboard .gold {
+      color: #3498db;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    #leaderboard .silver {
+      color: #ffe100;
+      font-size: 16px;
+    }
+
+    #leaderboard .bronze {
+      color: #f79e3a;
+      font-size: 14px;
+    }
+
+    /* Custom styles for other donors */
+    #leaderboard .othertier {
+      color: lightgray;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="logothing">
+        <a href="https://onixclient.com">
+            <img src="assets/biglogo.png" width="45" height="45" alt="logo">
+            <span class="name">
+                ONIX CLIENT
+            </span>
+        </a>
+    </div>
+    <span class="navbar">
+        <a href="https://onixclient.com">Home</a>
+        <a href="faq">FAQ</a>
+        <a href="license">License</a>
+        <a href="https://onixclient.com/patreon"target="_blank" rel="noopener noreferrer">Donate</a>
+        <a href="https://docs.onixclient.com"target="_blank" rel="noopener noreferrer">Scripting</a>
+        <a href="download" class="download" class="active">Download</a>
+    </span>
+</div><br> 
+<br><br>
+  <div id="leaderboard">
+    <h1>Top Donations</h1>
+    <ul id="donationList"></ul>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const jsonDataUrl = "https://raw.githubusercontent.com/jqms/jqms.github.io/main/donorsstuff/money.json";
+
+      function sortByDonationAmount(a, b) {
+        return b.money - a.money;
+      }
+
+      function formatDonationAmount(amount) {
+        return "$" + amount.toFixed(2);
+      }
+
+      function formatDonationName(name) {
+        return name;
+      }
+
+      function formatDonation(donation, index) {
+        let className = "";
+        if (index === 0) {
+          className = "gold";
+        } else if (index === 1) {
+          className = "silver";
+        } else if (index === 2) {
+          className = "bronze";
+        } else {
+          className = "othertier";
+        }
+        return "<span class='usersname " + className + "'>" + formatDonationName(donation.name) + "</span><span class='amount'>" + formatDonationAmount(donation.money) + "</span>";
+      }
+
+      function updateDonationList(donations) {
+        const donationList = document.getElementById("donationList");
+        donationList.innerHTML = "";
+        donations.forEach(function(donation, index) {
+          const donationListItem = document.createElement("li");
+          donationListItem.innerHTML = formatDonation(donation, index);
+          donationList.appendChild(donationListItem);
+        });
+      }
+
+      function getDonations() {
+        fetch(jsonDataUrl)
+          .then(function(response) {
+            return response.json();
+          })
+          .then(function(json) {
+            const donations = json.sort(sortByDonationAmount);
+            updateDonationList(donations);
+          });
+      }
+
+      getDonations();
+    });
+  </script>
+</body>
+</html>
