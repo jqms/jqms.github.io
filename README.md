@@ -1,11 +1,20 @@
-# onixclient.com
-[Onix Client](https://onixclient.com)
+# [onixclient.com](https://onixclient.com)
 
-# Revamp by
-[@EpiclyRaspberry](https://github.com/EpiclyRaspberry) & Continued by [@rosie](https://github.com/jqms)
+Revamp by
+[@EpiclyRaspberry](https://github.com/EpiclyRaspberry)
 
-## Original website developers:
+continued by
+[@rosie](https://github.com/jqms)
 
-[@Vitsowdy](https://github.com/Vitsowdy) AND [@h-m-m-m](https://github.com/h-m-m-m) AND [@EpiclyRaspberry](https://github.com/EpiclyRaspberry) AND [@HugoNotHere](https://github.com/HugoNotHere) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+---
 
-https://discord.com/invite/onixclient
+## Original website developers
+
+[@Vitsowdy](https://github.com/Vitsowdy),
+[@h-m-m-m](https://github.com/h-m-m-m),
+[@EpiclyRaspberry](https://github.com/EpiclyRaspberry)  &
+[@HugoNotHere](https://github.com/HugoNotHere)
+
+---
+
+[Onix Client Discord](https://discord.com/invite/onixclient)
