@@ -336,119 +336,110 @@
     <div class="grid-container">
         <div id="buttons">
             <script>
-                document.addEventListener('DOMContentLoaded', () => {
-                    fetch("https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/index.json")
-                        .then((response) => response.json())
-                        .then((data) => {
-                            const modules = data.modules.filter((module) => module.name && module.file && !module.lib && !module.autocomplete);
+            fetch("https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/index.json")
+                .then((response) => response.json())
+                .then((data) => {
+                    const modules = data.modules.filter((module) => module.name && module.file && !module.lib && !module.autocomplete);
 
-                            // Scroll to top button
-                            const scrollToTopButton = document.createElement("div");
-                            scrollToTopButton.classList.add("scrollToTopButton");
-                            scrollToTopButton.innerHTML = `<img src="../assets/scrolltotoplogo.png" width="30" height="30">`;
-                            scrollToTopButton.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
-                            document.body.appendChild(scrollToTopButton);
+                    const scrollToTopButton = document.createElement("div");
+                    scrollToTopButton.classList.add("scrollToTopButton");
+                    scrollToTopButton.innerHTML = `<img src="../assets/scrolltotoplogo.png" width="30" height="30">`;
+                    scrollToTopButton.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+                    document.body.appendChild(scrollToTopButton);
 
-                            let savedScrollPosition = 0; // Variable to store scroll position
+                    function displayModules(filteredModules) {
+                        const buttonsContainer = document.querySelector("#buttons");
+                        buttonsContainer.innerHTML = "";
 
-                            // Function to display filtered modules
-                            function displayModules(filteredModules) {
-                                const buttonsContainer = document.querySelector("#buttons");
-                                buttonsContainer.innerHTML = "";
+                        filteredModules.forEach(async (module) => {
+                            const buttonContainer = document.createElement("div");
+                            buttonContainer.classList.add("button-container");
 
-                                filteredModules.forEach(async (module) => {
-                                    const buttonContainer = document.createElement("div");
-                                    buttonContainer.classList.add("button-container");
+                            const buttonName = document.createElement("div");
+                            buttonName.classList.add("button-text");
+                            buttonName.textContent = module.name;
+                            buttonName.textContentUnmodified = module.name;
+                            if (buttonName.textContent.length > 13) {
+                                buttonName.textContent = buttonName.textContent.substring(0, 13);
+                                buttonName.textContent += "...";
+                            }
+                            buttonContainer.appendChild(buttonName);
 
-                                    const buttonName = document.createElement("div");
-                                    buttonName.classList.add("button-text");
-                                    buttonName.textContent = module.name;
-                                    buttonName.textContentUnmodified = module.name;
-                                    if (buttonName.textContent.length > 13) {
-                                        buttonName.textContent = buttonName.textContent.substring(0, 13);
-                                        buttonName.textContent += "...";
-                                    }
-                                    buttonContainer.appendChild(buttonName);
+                            const buttonDescription = document.createElement("div");
+                            buttonDescription.classList.add("button-description");
+                            buttonDescription.textContent = module.description;
+                            buttonContainer.appendChild(buttonDescription);
 
-                                    const buttonDescription = document.createElement("div");
-                                    buttonDescription.classList.add("button-description");
-                                    buttonDescription.textContent = module.description;
-                                    buttonContainer.appendChild(buttonDescription);
+                            const buttonDownload = document.createElement("a");
+                            buttonDownload.classList.add("button-download");
+                            const data = await fetch(`https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/${module.file}`)
+                                .then((response) => response.text());
+                            buttonDownload.href = `data:text/plain;charset=utf-8,${encodeURIComponent(data)}`;
+                            buttonDownload.download = module.file;
+                            const buttonDownloadText = document.createElement("span");
+                            buttonDownloadText.innerHTML = `<img src="../assets/downloadlogo.png" width="30" height="30">`;
+                            buttonDownload.appendChild(buttonDownloadText);
+                            buttonContainer.appendChild(buttonDownload);
+                            const buttonDownloadTooltip = document.createElement("div");
+                            buttonDownloadTooltip.classList.add("download-button-tooltip");
+                            buttonDownloadTooltip.textContent = "Download";
+                            buttonDownload.appendChild(buttonDownloadTooltip);
 
-                                    const buttonDownload = document.createElement("a");
-                                    buttonDownload.classList.add("button-download");
-                                    const data = await fetch(`https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/${module.file}`)
-                                        .then((response) => response.text());
-                                    buttonDownload.href = `data:text/plain;charset=utf-8,${encodeURIComponent(data)}`;
-                                    buttonDownload.download = module.file;
-                                    const buttonDownloadText = document.createElement("span");
-                                    buttonDownloadText.innerHTML = `<img src="../assets/downloadlogo.png" width="30" height="30">`;
-                                    buttonDownload.appendChild(buttonDownloadText);
-                                    buttonContainer.appendChild(buttonDownload);
-                                    const buttonDownloadTooltip = document.createElement("div");
-                                    buttonDownloadTooltip.classList.add("download-button-tooltip");
-                                    buttonDownloadTooltip.textContent = "Download";
-                                    buttonDownload.appendChild(buttonDownloadTooltip);
+                            const buttonOpenFile = document.createElement("a");
+                            buttonOpenFile.classList.add("button-openfile");
+                            buttonOpenFile.href = module.url;
+                            buttonOpenFile.download = module.file;
+                            buttonOpenFile.target = "_blank";
+                            const buttonOpenFileText = document.createElement("span");
+                            buttonOpenFileText.innerHTML = `<img src="../assets/openfilelogo.png" width="30" height="30">`;
+                            buttonOpenFile.appendChild(buttonOpenFileText);
+                            const buttonOpenFileTooltip = document.createElement("div");
+                            buttonOpenFileTooltip.classList.add("openfile-button-tooltip");
+                            buttonOpenFileTooltip.textContent = "Open";
+                            buttonOpenFile.appendChild(buttonOpenFileTooltip);
+                            buttonContainer.appendChild(buttonOpenFile);
 
-                                    const buttonOpenFile = document.createElement("a");
-                                    buttonOpenFile.classList.add("button-openfile");
-                                    buttonOpenFile.href = module.url;
-                                    buttonOpenFile.download = module.file;
-                                    buttonOpenFile.target = "_blank";
-                                    const buttonOpenFileText = document.createElement("span");
-                                    buttonOpenFileText.innerHTML = `<img src="../assets/openfilelogo.png" width="30" height="30">`;
-                                    buttonOpenFile.appendChild(buttonOpenFileText);
-                                    const buttonOpenFileTooltip = document.createElement("div");
-                                    buttonOpenFileTooltip.classList.add("openfile-button-tooltip");
-                                    buttonOpenFileTooltip.textContent = "Open";
-                                    buttonOpenFile.appendChild(buttonOpenFileTooltip);
-                                    buttonContainer.appendChild(buttonOpenFile);
+                            buttonsContainer.appendChild(buttonContainer);
+                        });
+                    }
 
-                                    buttonsContainer.appendChild(buttonContainer);
-                                });
+                    let searchTimeout;
+
+                    const searchInput = document.querySelector(".searchBar");
+                    searchInput.addEventListener("input", (e) => {
+                        clearTimeout(searchTimeout);
+
+                        searchTimeout = setTimeout(() => {
+                            const searchString = e.target.value.toLowerCase();
+
+                            const filteredModules = modules.filter((module) =>
+                                module.name.toLowerCase().includes(searchString) || module.description.toLowerCase().includes(searchString)
+                            );
+
+                            displayModules(filteredModules);
+
+                            const url = new URL(window.location.href);
+
+                            if (searchString) {
+                                url.searchParams.set('search', searchString);
+                            } else {
+                                url.searchParams.delete('search');
                             }
 
-                            const searchInput = document.querySelector(".searchBar");
-                            searchInput.addEventListener("input", (e) => { // Change event from 'keyup' to 'input'
-                                const searchString = e.target.value.toLowerCase();
+                            window.history.replaceState({}, document.title, url);
+                        }, 300);
+                    });
 
-                                const filteredModules = modules.filter((module) =>
-                                    module.name.toLowerCase().includes(searchString) || module.description.toLowerCase().includes(searchString)
-                                );
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const searchQuery = urlParams.get('search');
 
-                                displayModules(filteredModules);
-
-                                // Update URL as you type
-                                const url = new URL(window.location.href);
-
-                                if (searchString) {
-                                    url.searchParams.set('search', searchString);
-                                } else {
-                                    url.searchParams.delete('search');
-                                }
-
-                                window.history.replaceState({}, document.title, url);
-                            });
-
-                            // Get the search parameter from the URL
-                            const urlParams = new URLSearchParams(window.location.search);
-                            const searchQuery = urlParams.get('search');
-
-                            // If there's a search parameter in the URL, populate the search bar and apply the search
-                            if (searchQuery || searchQuery === '') {
-                                searchInput.value = decodeURIComponent(searchQuery);
-                                savedScrollPosition = window.scrollY; // Store current scroll position
-                                const event = new Event('input');
-                                searchInput.dispatchEvent(event);
-                            }
-
-                            // Restore scroll position after applying search
-                            window.addEventListener('load', () => {
-                                window.scrollTo(0, savedScrollPosition);
-                            });
-                        })
-                        .catch((error) => console.error(error));
-                });
+                    if (searchQuery || searchQuery === '') {
+                        searchInput.value = decodeURIComponent(searchQuery);
+                        const event = new Event('input');
+                        searchInput.dispatchEvent(event);
+                    }
+                })
+                .catch((error) => console.error(error));
 
             </script>
         </div>
