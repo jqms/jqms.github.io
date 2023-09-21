@@ -432,11 +432,11 @@
 
                     const urlParams = new URLSearchParams(window.location.search);
                     const searchQuery = urlParams.get('search');
+                    const event = new Event('input');
+                    searchInput.dispatchEvent(event);
 
                     if (searchQuery || searchQuery === '') {
                         searchInput.value = decodeURIComponent(searchQuery);
-                        const event = new Event('input');
-                        searchInput.dispatchEvent(event);
                     }
                 })
                 .catch((error) => console.error(error));
