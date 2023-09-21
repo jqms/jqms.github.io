@@ -341,12 +341,67 @@
                     .then((data) => {
                         const modules = data.modules.filter((module) => module.name && module.file && !module.lib && !module.autocomplete);
 
-                        // scroll to top button
                         const scrollToTopButton = document.createElement("div");
                         scrollToTopButton.classList.add("scrollToTopButton");
                         scrollToTopButton.innerHTML = `<img src="../assets/scrolltotoplogo.png" width="30" height="30">`;
                         scrollToTopButton.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
                         document.body.appendChild(scrollToTopButton);
+
+                        function displayModules(filteredModules) {
+                            const buttonsContainer = document.querySelector("#buttons");
+                            buttonsContainer.innerHTML = "";
+
+                            filteredModules.forEach(async (module) => {
+                                const buttonContainer = document.createElement("div");
+                                buttonContainer.classList.add("button-container");
+
+                                const buttonName = document.createElement("div");
+                                buttonName.classList.add("button-text");
+                                buttonName.textContent = module.name;
+                                buttonName.textContentUnmodified = module.name;
+                                if (buttonName.textContent.length > 13) {
+                                    buttonName.textContent = buttonName.textContent.substring(0, 13);
+                                    buttonName.textContent += "...";
+                                }
+                                buttonContainer.appendChild(buttonName);
+
+                                const buttonDescription = document.createElement("div");
+                                buttonDescription.classList.add("button-description");
+                                buttonDescription.textContent = module.description;
+                                buttonContainer.appendChild(buttonDescription);
+
+                                const buttonDownload = document.createElement("a");
+                                buttonDownload.classList.add("button-download");
+                                const data = await fetch(`https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/${module.file}`)
+                                    .then((response) => response.text());
+                                buttonDownload.href = `data:text/plain;charset=utf-8,${encodeURIComponent(data)}`;
+                                buttonDownload.download = module.file;
+                                const buttonDownloadText = document.createElement("span");
+                                buttonDownloadText.innerHTML = `<img src="../assets/downloadlogo.png" width="30" height="30">`;
+                                buttonDownload.appendChild(buttonDownloadText);
+                                buttonContainer.appendChild(buttonDownload);
+                                const buttonDownloadTooltip = document.createElement("div");
+                                buttonDownloadTooltip.classList.add("download-button-tooltip");
+                                buttonDownloadTooltip.textContent = "Download";
+                                buttonDownload.appendChild(buttonDownloadTooltip);
+
+                                const buttonOpenFile = document.createElement("a");
+                                buttonOpenFile.classList.add("button-openfile");
+                                buttonOpenFile.href = module.url;
+                                buttonOpenFile.download = module.file;
+                                buttonOpenFile.target = "_blank";
+                                const buttonOpenFileText = document.createElement("span");
+                                buttonOpenFileText.innerHTML = `<img src="../assets/openfilelogo.png" width="30" height="30">`;
+                                buttonOpenFile.appendChild(buttonOpenFileText);
+                                const buttonOpenFileTooltip = document.createElement("div");
+                                buttonOpenFileTooltip.classList.add("openfile-button-tooltip");
+                                buttonOpenFileTooltip.textContent = "Open";
+                                buttonOpenFile.appendChild(buttonOpenFileTooltip);
+                                buttonContainer.appendChild(buttonOpenFile);
+
+                                buttonsContainer.appendChild(buttonContainer);
+                            });
+                        }
 
                         const searchInput = document.querySelector(".searchBar");
                         searchInput.addEventListener("keyup", (e) => {
@@ -359,76 +414,18 @@
                             displayModules(filteredModules);
                         });
 
-                        modules.forEach(async (module) => {
-                            const buttonContainer = document.createElement("div");
-                            buttonContainer.classList.add("button-container");
+                        const urlParams = new URLSearchParams(window.location.search);
+                        const searchQuery = urlParams.get('search');
 
-                            const buttonName = document.createElement("div");
-                            buttonName.classList.add("button-text");
-                            buttonName.textContent = module.name;
-                            buttonName.textContentUnmodified = module.name;
-                            if (buttonName.textContent.length > 13) {
-                                buttonName.textContent = buttonName.textContent.substring(0, 13);
-                                buttonName.textContent += "...";
-                            }
-                            buttonContainer.appendChild(buttonName);
-
-                            const buttonDescription = document.createElement("div");
-                            buttonDescription.classList.add("button-description");
-                            buttonDescription.textContent = module.description;
-                            buttonContainer.appendChild(buttonDescription);
-
-                            const buttonDownload = document.createElement("a");
-                            buttonDownload.classList.add("button-download");
-                            const data = await fetch(`https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/${module.file}`)
-                                .then((response) => response.text())
-                            // .then((data) => {
-                            //     buttonDownload.href = `data:text/plain;charset=utf-8,${encodeURIComponent(data)}`;
-                            //     buttonDownload.download = module.file;
-                            // });
-                            buttonDownload.href = `data:text/plain;charset=utf-8,${encodeURIComponent(data)}`;
-                            buttonDownload.download = module.file;
-                            const buttonDownloadText = document.createElement("span");
-                            buttonDownloadText.innerHTML = `<img src="../assets/downloadlogo.png" width="30" height="30">`;
-                            buttonDownload.appendChild(buttonDownloadText);
-                            buttonContainer.appendChild(buttonDownload);
-                            const buttonDownloadTooltip = document.createElement("div");
-                            buttonDownloadTooltip.classList.add("download-button-tooltip");
-                            buttonDownloadTooltip.textContent = "Download";
-                            buttonDownload.appendChild(buttonDownloadTooltip);
-
-                            const buttonOpenFile = document.createElement("a");
-                            buttonOpenFile.classList.add("button-openfile");
-                            buttonOpenFile.href = module.url;
-                            buttonOpenFile.download = module.file;
-                            buttonOpenFile.target = "_blank";
-                            const buttonOpenFileText = document.createElement("span");
-                            buttonOpenFileText.innerHTML = `<img src="../assets/openfilelogo.png" width="30" height="30">`;
-                            buttonOpenFile.appendChild(buttonOpenFileText);
-                            const buttonOpenFileTooltip = document.createElement("div");
-                            buttonOpenFileTooltip.classList.add("openfile-button-tooltip");
-                            buttonOpenFileTooltip.textContent = "Open";
-                            buttonOpenFile.appendChild(buttonOpenFileTooltip);
-                            buttonContainer.appendChild(buttonOpenFile);
-
-                            document.querySelector("#buttons").appendChild(buttonContainer);
-                        });
-                        // search bar
-                        const searchBar = document.querySelector(".searchBar");
-                        searchBar.addEventListener("keyup", (e) => {
-                            const searchString = e.target.value.toLowerCase();
-                            const buttons = document.querySelectorAll(".button-container");
-                            const buttonsArray = Array.from(buttons);
-                            buttonsArray.forEach((button) => {
-                                const buttonName = button.querySelector(".button-text").textContentUnmodified;
-                                button.style.display = buttonName.toLowerCase().includes(searchString) ? "block" : "none";
-                            });
-                        });
+                        if (searchQuery) {
+                            searchInput.value = decodeURIComponent(searchQuery);
+                            const event = new Event('keyup');
+                            searchInput.dispatchEvent(event);
+                        }
                     })
                     .catch((error) => console.error(error));
             </script>
         </div>
     </div>
 </body>
-
 </html>
