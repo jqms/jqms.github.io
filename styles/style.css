@@ -189,7 +189,7 @@ footer {
 }
 .logothing {
   transition: all .5s ease-in-out;
-  float: inline-start;
+  position: absolute;
 }
 
 .logothing:hover {
