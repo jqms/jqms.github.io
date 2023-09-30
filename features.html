@@ -36,174 +36,419 @@
             <a href="download" class="download">Download</a>
         </span>
     </div>
-    <section id="free">
-        <div class="v2">
-            <br><br>
-            <div class="v2-text">
-                <h1>Free Features</h1>
-                <h4>V2 features available to all on 1.19.81 and below (except incompatible ones).</h4>
-                <button onclick="toggleFeatures()" class="dropdown-btn">
-                    V2 Features
-                    <i class="fa fa-caret-down"></i>
-                </button>
-                <ul id="feature-list" style="display: block;">
-                    <li>Armour HUD</li>
-                    <li>Audio Subtitles (1.18.30-)</li>
-                    <li>AutoGG</li>
-                    <li>Block Outline/Overlay</li>
-                    <li>CPS Counter</li>
-                    <li>Chunk Borders</li>
-                    <li>Clock</li>
-                    <li>Combo Counter</li>
-                    <li>Coordinates</li>
-                    <li>Creative Tools</li>
-                    <li>Custom Crosshairs</li>
-                    <li>Direction HUD</li>
-                    <li>Environment Changer</li>
-                    <li>FPS Counter</li>
-                    <li>Flappy Bird</li>
-                    <li>Freelook (1.19.40-)</li>
-                    <li>Fullbright</li>
-                    <li>Hitboxes</li>
-                    <li>Hurt Color</li>
-                    <li>Item Physics</li>
-                    <li>Java Debug Menu</li>
-                    <li>Keystrokes</li>
-                    <li>Light Overlay</li>
-                    <li>Movable Paperdoll</li>
-                    <li>Pack Display</li>
-                    <li>Player Tab</li>
-                    <li>Potion HUD</li>
-                    <li>Reach Display</li>
-                    <li>Render Options</li>
-                    <li>Search Client Side Nick</li>
-                    <li>Server IP Display</li>
-                    <li>Snake</li>
-                    <li>Speed Display</li>
-                    <li>TNT Timer</li>
-                    <li>Theme Editor</li>
-                    <li>Third Person Nametag</li>
-                    <li>Toggle Sprint/Sneak</li>
-                    <li>VSync Disabler</li>
-                    <li>Waypoints</li>
-                    <li>Zoom</li>
-                </ul>
+    <div class="hidden">
+        <div class="content">
+            <div class="title">
+                <h1>Features</h1>
+                <p>Here is a list of all the features in Onix Client.</p>
             </div>
         </div>
-    </section>
-    <hr>
-    <section id="premium">
-        <div class="v3">
-            <br><br>
-            <div class="v3-text">
-                <h1>Exclusive Premium Features</h1>
-                <h4>V3 features available to all, on any version from 1.16.40-latest!</h4>
-                <button onclick="toggleV3Features()" class="dropdown-btn">
-                    V3 Features
-                    <i class="fa fa-caret-down"></i>
-                </button>
-                <ul id="v3feature-list" style="display: block;">
-                    <h2>Main Exclusives</h2>
-                    <li>New UI</li>
-                    <li>Chroma Customiser</li>
-                    <li>Client Themes</li>
-                    <li>Countless Settings in Global Settings</li>
-                    <li>Access to <a href="https://onixclient.com/scripting/repo" target="_blank" rel="noopener noreferrer">Scripting</a></li>
-                    <br>
-                    <h2>Modules</h2>
-                    <b>
-                        <li>Everything in V2</li>
-                    </b>
-                    <li>Arrow Counter</li>
-                    <li>Auto Text Hotkey</li>
-                    <li>Break Progress</li>
-                    <li>Crop Protector</li>
-                    <li>Day Counter</li>
-                    <li>Dynamic Light</li>
-                    <li>GUI Scale Changer</li>
-                    <li>Low Health Warning</li>
-                    <li>Motion Blur</li>
-                    <li>Movable Chat</li>
-                    <li>Movable Scoreboard</li>
-                    <li>Particle Multiplier</li>
-                    <li>Ping Display</li>
-                    <li>Potion/Soup Counter</li>
-                    <li>Snaplook</li>
-                    <p>& many more to come!</p>
-
-                </ul>
-                <a href="https://onixclient.com/patreon" target="_blank" rel="noopener noreferrer">
-                    <button class="donate">
-                        Purchase
-                    </button>
-                <br><br><br><br><br><br><br><br><br><br><br>
-            </div>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search...">
         </div>
-    </section>
-
-    <style>
-        .dropdown-btn {
-            background-color: #14426d;
-            color: white;
-            padding: 10px 16px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .dropdown-btn:hover {
-            background-color: #325577;
-        }
-
-        .dropdown-btn i {
-            margin-left: 5px;
-        }
-
-        button {
-            background-color: #b69731;
-            color: white;
-            padding: 10px 16px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: all 0.3s ease-in-out;
-        }
-
-        button:hover {
-            background-color: #c7a83f;
-        }
-    </style>
-
-    <script>
-        function toggleFeatures() {
-            var featureList = document.getElementById("feature-list");
-            if (featureList.style.display === "none" || featureList.style.display === "") {
-                featureList.style.display = "block";
-            } else {
-                featureList.style.display = "none";
+        <style>
+            .title {
+                text-align: center;
+                margin-top: 100px;
             }
-        }
 
-        function toggleV3Features() {
-            var featureList = document.getElementById("v3feature-list");
-            if (featureList.style.display === "block" || featureList.style.display === "") {
-                featureList.style.display = "none";
-            } else {
-                featureList.style.display = "block";
+            .card {
+                border-radius: 10px;
+                background-image: linear-gradient(180deg, rgba(36, 36, 36, 1), rgba(36, 36, 36, 0));
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                padding: 10px;
+                max-width: 800px;
+                min-height: 100px;
+                margin: 25px auto;
+                box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+                transition: all .2s;
+                position: relative;
+                z-index: 1000;
             }
+
+            .card-title {
+                font-size: 24px;
+                font-weight: bold;
+            }
+
+            .card-description {
+                font-size: 16px;
+                color: #ccc;
+            }
+
+            .card:hover {
+                transform: scale(1.05);
+            }
+
+            .mod-info {
+                position: absolute;
+                bottom: -10px;
+                right: 10px;
+                font-size: 16px;
+                color: #ccc;
+            }
+
+            .mod-info-premium {
+                position: absolute;
+                bottom: -10px;
+                right: 10px;
+                font-size: 16px;
+                color: #ccc;
+            }
+
+            .search-container {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            #searchInput {
+                width: 500px;
+                padding: 10px;
+                border-radius: 10px;
+                font-size: 16px;
+                transition: all .2s;
+                border: 1px solid #fff;
+                background-color: #101010;
+                color: #fff;
+            }
+
+            ::-webkit-scrollbar {
+                width: 10px;
+                border-radius: 10px;
+            }
+
+            ::-webkit-scrollbar-thumb {
+                background-color: #616161;
+                border-radius: 10px;
+                transition: all .2s;
+            }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background-color: #717171;
+            }
+
+            ::-webkit-scrollbar-track {
+                background-color: #101010;
+            }
+
+            .scroller {
+                scrollbar-width: thin;
+                scrollbar-base-color: #202020;
+                scrollbar-face-color: #101010;
+            }
+
+            .hidden {
+                opacity: 0;
+                transform: translateY(1%);
+                transition: all 1s;
+            }
+
+            .visible {
+                opacity: 1;
+                transform: translateY(0%);
+                transition: all 1s;
+            }
+
+            input[type="checkbox"] {
+                margin: 5px;
+                cursor: pointer;
+            }
+
+            input[type="checkbox"] {
+
+                width: 20px;
+                height: 20px;
+            }
+
+            label {
+                font-size: 16px;
+            }
+
+            div {
+                margin-bottom: 10px;
+            }
+        </style>
+        <div id="modCards"></div>
+    <script defer>
+        let freeMods = [
+            "Armor HUD",
+            "AutoGG",
+            "Block Outline/Overlay",
+            "CPS Counter",
+            "Chunk Borders",
+            "Clock",
+            "Combo Counter",
+            "Coordinates",
+            "Creative Tools",
+            "Custom Crosshair",
+            "Double Click Prevent",
+            "Direction HUD",
+            "Dynamic Light",
+            "Environment Changer",
+            "FPS Counter",
+            "Flappy Bird",
+            "Fullbright",
+            "Hitboxes",
+            "Hurt Color",
+            "Item Physics",
+            "Java Debug Menu",
+            "Keystrokes",
+            "Light Overlay",
+            "Movable Paperdoll",
+            "Pack Display",
+            "Player Tab",
+            "Potion HUD",
+            "Reach Display",
+            "Render Options",
+            "Server IP",
+            "Snake",
+            "Speed Display",
+            "TNT Timer",
+            "Third Person Nametag",
+            "Toggle Sprint/Sneak",
+            "Waypoints",
+            "Zoom"
+        ]
+        document.getElementById('searchInput').addEventListener('input', searchFeatures);
+
+        function searchFeatures() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toLowerCase();
+            const cards = document.querySelectorAll('.card');
+
+            cards.forEach(card => {
+                const title = card.querySelector('.card-title').textContent.toLowerCase();
+                const description = card.querySelector('.card-description').textContent.toLowerCase();
+
+                if (title.includes(filter) || description.includes(filter)) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
         }
 
+        function filterFeatures() {
+            const cards = document.querySelectorAll('.card');
+            const hudCheckbox = document.getElementById('hudCheckbox');
+            const globalCheckbox = document.getElementById('globalCheckbox');
+
+            cards.forEach(card => {
+                const hudMod = card.querySelector('.mod-info').textContent.toLowerCase().includes('hud');
+                const globalMod = card.querySelector('.mod-info').textContent.toLowerCase().includes('global');
+
+                if (!hudCheckbox.checked && !globalCheckbox.checked) {
+                    card.style.display = '';
+                } else if ((hudCheckbox.checked && globalCheckbox.checked) ||
+                    (hudCheckbox.checked && hudMod) ||
+                    (globalCheckbox.checked && globalMod)) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+
+        function createFilterCheckbox(name, id) {
+            const filterCheckbox = document.createElement('input');
+            filterCheckbox.type = 'checkbox';
+            filterCheckbox.id = id;
+            filterCheckbox.style.margin = '5px';
+            filterCheckbox.style.cursor = 'pointer';
+            filterCheckbox.addEventListener('change', filterFeatures);
+
+            const label = document.createElement('label');
+            label.textContent = name;
+            label.setAttribute('for', id);
+
+            const container = document.createElement('div');
+            container.appendChild(filterCheckbox);
+            container.appendChild(label);
+
+            return container;
+        }
+
+        function createFilterCheckboxes() {
+            const filters = document.getElementById('filters');
+            const hudFilterCheckbox = createFilterCheckbox('HUD', 'hudCheckbox');
+            const globalFilterCheckbox = createFilterCheckbox('Global', 'globalCheckbox');
+
+            filters.appendChild(hudFilterCheckbox);
+            filters.appendChild(globalFilterCheckbox);
+        }
+
+        //createFilterCheckboxes();
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch("https://raw.githubusercontent.com/jqms/jqms.github.io/main/features.json")
+                .then(response => response.json())
+                .then(data => {
+                    const modCardsContainer = document.getElementById('modCards');
+                    data.sort((a, b) => a[0].localeCompare(b[0]));
+
+                    const observer = new IntersectionObserver(entries => {
+                        entries.forEach(entry => {
+                            const card = entry.target;
+                            if (entry.isIntersecting) {
+                                card.classList.add('visible');
+                            } else {
+                                card.classList.remove('visible');
+                            }
+                        });
+                    });
+                    const hiddenElements = document.querySelectorAll('.hidden');
+                    hiddenElements.forEach(element => {
+                        observer.observe(element);
+                    });
+                    data.forEach(mod => {
+
+
+                        const [title, description, settingCount, isHUDMod] = mod;
+
+                        if (title === "Global Settings" || title === "Color Options") return;
+                        const card = document.createElement('div');
+                        card.classList.add('card');
+
+                        const titleElement = document.createElement('p');
+                        titleElement.textContent = title;
+                        titleElement.classList.add('card-title');
+                        titleElement.style.marginTop = '-5px';
+
+                        const descriptionElement = document.createElement('p');
+                        descriptionElement.textContent = description;
+                        descriptionElement.classList.add('card-description');
+                        // move the description physically higher on the y level
+                        descriptionElement.style.marginTop = '-25px';
+
+
+                        // let settingsIcon = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAABDElEQVR4nOWVT44BURDGmzUtuAUHEDcwO4mwxAlcBltm6Uh2kxCJA2DHTyqpBO1VpZk3k0nmSzp56ff96VTVe50k/wLAB3DgBll3YgZ88oxlLPMm8BUIkHeNV82KwAxYAQNgDlywcVHOQDWiLXoBY76PkWVeAnYRAvZAGgqYOKIN0APK+nSBtcOfhALawNEwrwX4Vd3LQjzaVplawCkj6Dk962e4om2ZTVbR/YESlB1uyiMOrvkbAZWXAowSdR2+zH++EjlNXktDA/w6sM3d5Bxj2teap/rlIXN3TH/2oAnkmEcIGCYWgELmspsBZ8dM9qZavpWuC2aAEdqIdl07IctAwCKKefIbv8w/jSs32vccvJSpxQAAAABJRU5ErkJggg==";
+
+                        // const settingsIconElement = document.createElement('img');
+                        // settingsIconElement.src = settingsIcon;
+                        // settingsIconElement.style.width = '25px';
+                        // settingsIconElement.style.height = '25px';
+                        // settingsIconElement.style.position = 'absolute';
+                        // let settingCountTextLength = '${settingCount} settings'.length ;
+                        // settingsIconElement.style.right = `${settingCountTextLength}px`;
+                        // settingsIconElement.style.bottom = '0px';
+
+                        const settingCountElement = document.createElement('p');
+                        settingCountElement.textContent = `${settingCount} settings`;
+                        settingCountElement.classList.add('mod-info');
+
+                        let nonHudModBase64 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAACvElEQVR4nO2ZTW9MYRTHB01FbbtiVNJIX/gEteyq9COQli1CiJIRCyslIlRj0/ABSNGG+AANS8ZCLUp1wbJqQVJd8JOTnJv8PW47M73PzHSS+0smc+ecPuee/73P23laKOTk5OTkbCWA/cAwcAa47B+7Pgp0FbYiwCHgNvCZyiwCt4D+rZB4HzAL/KF2rM0zoLcZiW8HrgJrZOcXULKYjUp+N/CyQlLvgQfy+yEwX6HNc4vdiORfBzd+CzyW39+APcA1sdn1XmBFbI+8rfKqbiK824RP/g7QAXwV24j//T8C3HZCbF+AXcDdlDcRvzt5n1cuun1UbJ+AHRsIaAtmquNuHwtil+ox2+iAvSe+F2I/K/b/BLj9vNhnxT4ZDOyemAJsqkx4I095J/BTpsViFQK6xP4DaJe3o2PiScxFKpnn7XtAfINyw3LQLlWA+96Jb1DsA3Kv31EWO19hm8XNGAKq2R7Ui49Zk9f+2iyKWQTYrjJhLsW/JP7uGsZAt/iWUuLOiX8oiwDbBidMpfiXxd9Zg4BO8S2nxJ0S/6ksAq5IoOspfl0b2msQYNNvwlpK3PEoi1ogYLyBAm7EEnC61bvQcKsP4i5aeRo1vIZtFguFrHgB3izGYwg42MDN3OFgM9eXWYAHttODBNvytq2znd6XcTtdFt90lOQ9eK8XGQmT4rMSMOFcFQIurFPQ3Bf7KnAgmgC/gR19KGNuHxHbYhUlpU69x9xup3fKpajJS1GvT9uYSCnqRzcQcDKlqJ8IYs4A26IL8AQ6/OhDKQfHKit+hBIeqxSB78GxSjmIZQtYR12SD86GwjcRMu+HWQl2/aFCm5m6Jx90p1IwsDfLqvX5unWbCkJ6gKc+Z9eKtZmOPttsUki/FeBWw1aR+IJvl+MsUrGxxQw4Yttg+QeHXQ9l3pjl5OTk5BQi8xfwTH7U8lOvdwAAAABJRU5ErkJggg==";
+                        let hudModBase64 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAXklEQVR4nO3VQQqAMAxE0RzP4q3tTVrv8cVFlykIiUWZtw58mE3MRH4N2IGTeB0os/B9kKXNwqlM4UFTRzNPeElhj6Z+c+rOoidRkuIN2NywDEB9MGu1ReEjLCyfdgEWjVVRy8VpuAAAAABJRU5ErkJggg==";
+
+                        let base64ToUse = isHUDMod ? hudModBase64 : nonHudModBase64;
+                        let hudModText = isHUDMod ? "HUD" : "Global";
+
+                        let hudModIcon = document.createElement('img');
+                        hudModIcon.src = base64ToUse;
+                        hudModIcon.style.width = '25px';
+                        hudModIcon.style.height = '25px';
+                        hudModIcon.style.position = 'absolute';
+                        hudModIcon.style.left = '-30px';
+                        hudModIcon.color = '#fff';
+
+                        const hudMod = document.createElement('p');
+                        hudMod.textContent = hudModText;
+                        hudMod.classList.add('mod-info');
+                        hudMod.style.bottom = '-10px';
+                        hudMod.style.left = '35px';
+                        hudMod.style.color = '#ccc';
+                        hudMod.style.fontSize = '16px';
+                        hudMod.style.color = '#fff';
+                        hudMod.style.fontWeight = 'bold';
+
+                        let premiumOnlyIcon = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAABIklEQVR4nOWVMW7CMBSG/3IPJA7AwILUC1DUMXehV0DdOhQJWDoVdYKJkUqIIwB6j5ELICZG+FGcUhGagG3cAWHpX+KX7/OzrQS4m0FFiQIxUZT+QzCggj/ph4UvUKVgdyQgBY/hBIpRCp5kHAYueMqAH7qo+YNnKHKBZwqmZwRTUzND0WalEQVtKiZUrHOhmpv4nYlhCKI0XFH3APJC6nb7rJ45PR8qXgMK3v6eAfFARSsA/D1mZR90LBF0rtiWDxKF87eJKFDQ84B/XoSnrqy7ILKCG4HixWOLGi6CrkcHHXuB4Nujg5FLB8uMFe6oGJqcfrqTLF0EmyPwNv7BcI7K7/wcFfMsmTsINi6CJhUrKr4oKOfWCcqmJqltWgtuauwByGzU7M18r40AAAAASUVORK5CYII=";
+                        if (!freeMods.includes(title)) {
+                            function createPremiumElement(tag, attributes) {
+                                const element = document.createElement(tag);
+                                Object.assign(element.style, attributes.style);
+                                if (attributes.eventListeners) {
+                                    for (const [event, listener] of Object.entries(attributes.eventListeners)) {
+                                        element.addEventListener(event, listener);
+                                    }
+                                }
+                                return element;
+                            }
+
+                            const redirectToPatreon = () => {
+                                window.location.href = "https://onixclient.com/patreon";
+                            };
+
+                            const transformOnHover = () => {
+                                premiumOnlyElement.style.transform = 'scale(1.1)';
+                                premiumOnlyElement.title = 'This feature is only available to Onix Client Premium users. Click to learn more.';
+                            };
+
+                            const premiumOnlyText = createPremiumElement('p', {
+                                style: {
+                                    bottom: '-5px',
+                                    right: '40px',
+                                    color: '#fff',
+                                    fontSize: '16px',
+                                    fontWeight: 'bold',
+                                    cursor: 'pointer'
+                                },
+                                eventListeners: {
+                                    click: redirectToPatreon,
+                                    mouseover: transformOnHover,
+                                    mouseout: () => premiumOnlyElement.style.transform = 'scale(1)'
+                                }
+                            });
+                            premiumOnlyText.textContent = 'Premium Only';
+                            premiumOnlyText.classList.add('mod-info-premium');
+
+                            const premiumOnlyElement = createPremiumElement('img', {
+                                style: {
+                                    width: '25px',
+                                    height: '25px',
+                                    position: 'absolute',
+                                    right: '10px',
+                                    bottom: '10px',
+                                    zIndex: '1000',
+                                    cursor: 'pointer',
+                                    transition: 'all .2s'
+                                },
+                                eventListeners: {
+                                    click: redirectToPatreon,
+                                    mouseover: transformOnHover,
+                                    mouseout: () => premiumOnlyElement.style.transform = 'scale(1)'
+                                }
+                            });
+                            premiumOnlyElement.src = premiumOnlyIcon;
+
+                            card.appendChild(premiumOnlyText);
+                            card.appendChild(premiumOnlyElement);
+                        }
+
+
+                        card.appendChild(titleElement);
+                        card.appendChild(descriptionElement);
+                        card.appendChild(document.createElement('br'));
+                        // card.appendChild(settingsIconElement);
+                        // card.appendChild(settingCountElement);
+                        hudMod.appendChild(hudModIcon);
+                        card.appendChild(hudMod);
+                        modCardsContainer.appendChild(card);
+                    });
+                })
+                .catch(error => console.error('Error loading features.json:', error));
+        });
     </script>
-
 </body>
-        <footer>
-            <div>
-                <br><br>
-                <hr>
-                <p>Copyright © 2023 Onix Client</p>
-            </div>
-        </footer>
+<footer>
+    <div class="hidden">
+        <br><br>
+        <hr>
+        <p>Copyright © 2023 Onix Client</p>
+        <a href="https://icons8.com">Icons by Icons8</a>
+    </div>
+</footer>
+
 </html>
