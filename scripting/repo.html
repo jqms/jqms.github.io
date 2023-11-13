@@ -108,6 +108,51 @@
             opacity: 1;
         }
 
+        .button-import {
+            display: flex;
+            color: #fff;
+            text-decoration: none;
+            padding: 7.5px;
+            background-color: #8e823e;
+            border-radius: 10px;
+            transition: all 0.2s ease-in-out;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            opacity: 0;
+            z-index: 2;
+            transform: translateX(-50%);
+            /* transform: translateX(175%); */
+            height: 30px;
+            width: 30px;
+        }
+
+        .import-button-tooltip {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            background-color: #252525;
+            border-radius: 5px;
+            padding: 2px;
+            transform: translateX(-50%);
+            opacity: 0;
+            font-size: 10px;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .button-container:hover .button-import {
+            opacity: 1;
+        }
+
+        .button-import:hover {
+            background-color: #726831;
+            transform: translateX(-50%) scale(1.05);
+        }
+
+        .button-import:hover .import-button-tooltip {
+            opacity: 1;
+        }
+
         .button-openfile {
             display: flex;
             color: #fff;
@@ -267,7 +312,6 @@
             transform: scale(1.05);
         }
 
-        /* đđđđđđđđđđđđđđđđđđđ */
         iframe {
             border-radius: 10px;
         }
@@ -336,6 +380,7 @@
     <div class="grid-container">
         <div id="buttons">
             <script>
+            let showImport = false;
             fetch("https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/index.json")
                 .then((response) => response.json())
                 .then((data) => {
@@ -384,6 +429,20 @@
                             buttonDownloadTooltip.classList.add("download-button-tooltip");
                             buttonDownloadTooltip.textContent = "Download";
                             buttonDownload.appendChild(buttonDownloadTooltip);
+                            
+                            if (showImport === true) {
+                                const buttonImport = document.createElement("a");
+                                buttonImport.classList.add("button-import");
+                                buttonImport.href = `minecraft:///OnixClient/LegacyScripting/{"reason":"download","content":{"url":"https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/${module.file}","type":"module"}}`;
+                                const buttonImportText = document.createElement("span");
+                                buttonImportText.innerHTML = `<img src="../assets/importlogo.png" width="30" height="30">`;
+                                buttonImport.appendChild(buttonImportText);
+                                buttonContainer.appendChild(buttonImport);
+                                const buttonImportTooltip = document.createElement("div");
+                                buttonImportTooltip.classList.add("import-button-tooltip");
+                                buttonImportTooltip.textContent = "Import";
+                                buttonImport.appendChild(buttonImportTooltip);
+                            }
 
                             const buttonOpenFile = document.createElement("a");
                             buttonOpenFile.classList.add("button-openfile");
@@ -398,7 +457,6 @@
                             buttonOpenFileTooltip.textContent = "Open";
                             buttonOpenFile.appendChild(buttonOpenFileTooltip);
                             buttonContainer.appendChild(buttonOpenFile);
-
                             buttonsContainer.appendChild(buttonContainer);
                         });
                     }
