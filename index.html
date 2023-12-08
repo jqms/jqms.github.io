@@ -80,12 +80,42 @@
             </script>
         </p>
     </div>
-    <div>
+    <div id="downloadButtonInfiniteGrow">
         <center>
             <a href="download">
                 <img src="assets/download.png" width="210.375" height="25.125" class="chroma">
             </a>
         </center>
+        <script>
+                        let downloadButtonInfiniteGrow = document.getElementById('downloadButtonInfiniteGrow');
+            let scale = 1.0;
+            let shouldScale = false;
+            let animationFrame;
+
+            function scaleElement() {
+                scale += 0.01
+                downloadButtonInfiniteGrow.style.transform = 'scale(' + scale + ')';
+                animationFrame = requestAnimationFrame(scaleElement);
+            }
+
+            downloadButtonInfiniteGrow.addEventListener('mouseover', function() {
+                if (!shouldScale) {
+                    shouldScale = true;
+                    animationFrame = requestAnimationFrame(scaleElement);
+                }
+            });
+
+            downloadButtonInfiniteGrow.addEventListener('mouseout', function() {
+                shouldScale = false;
+                cancelAnimationFrame(animationFrame);
+                downloadButtonInfiniteGrow.style.transition = 'transform 0.3s ease-out';
+                downloadButtonInfiniteGrow.style.transform = 'scale(1.0)';
+                setTimeout(() => {
+                    downloadButtonInfiniteGrow.style.transition = '';
+                    scale = 1.0;
+                }, 300);
+            });
+        </script>
     </div>
     <footer>
         <div>
