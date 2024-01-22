@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Onix Client Script Downloader</title>
+    <title>Onix Client - Scripts</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins" />
     <link rel="icon" href="../favicon.ico" />
     <link rel="stylesheet" href="../styles/style.css" />
@@ -381,6 +381,7 @@
         <div id="buttons">
             <script>
             let showImport = true;
+            let modCount = 0;
             fetch("https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/index.json")
                 .then((response) => response.json())
                 .then((data) => {
@@ -397,6 +398,7 @@
                         buttonsContainer.innerHTML = "";
 
                         filteredModules.forEach(async (module) => {
+                            modCount++;
                             const buttonContainer = document.createElement("div");
                             buttonContainer.classList.add("button-container");
 
@@ -460,7 +462,9 @@
                             buttonContainer.appendChild(buttonOpenFile);
                             buttonsContainer.appendChild(buttonContainer);
                         });
+                        document.title = `Onix Client - Scripts (${modCount})`;
                     }
+                    // append mod count to title
 
                     let searchTimeout;
 
