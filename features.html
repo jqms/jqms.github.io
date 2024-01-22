@@ -282,7 +282,7 @@
         }
 
         //createFilterCheckboxes();
-
+        let modCount = 0;
 
         document.addEventListener('DOMContentLoaded', function () {
             fetch("https://raw.githubusercontent.com/jqms/jqms.github.io/main/features.json")
@@ -306,7 +306,7 @@
                         observer.observe(element);
                     });
                     data.forEach(mod => {
-
+                        modCount++;
 
                         const [title, description, settingCount, isHUDMod] = mod;
 
@@ -438,8 +438,11 @@
                         card.appendChild(hudMod);
                         modCardsContainer.appendChild(card);
                     });
+                    document.title = `Onix Client - Features (${modCount})`;
                 })
                 .catch(error => console.error('Error loading features.json:', error));
+                // append the mod count to the title
+                
         });
     </script>
 </body>
