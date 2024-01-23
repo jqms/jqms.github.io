@@ -199,6 +199,7 @@
             "Movable Paperdoll",
             "Pack Display",
             "Player Tab",
+            "Player List Tab",
             "Potion HUD",
             "Reach Display",
             "Render Options",
@@ -310,7 +311,7 @@
 
                         const [title, description, settingCount, isHUDMod] = mod;
 
-                        if (title === "Global Settings" || title === "Color Options") return;
+                        if (title === "Global Settings" || title === "Color Options" || title === "Animation Settings") return;
                         const card = document.createElement('div');
                         card.classList.add('card');
 
