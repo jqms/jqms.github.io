@@ -87,7 +87,8 @@
             </a>
         </center>
         <script>
-                        let downloadButtonInfiniteGrow = document.getElementById('downloadButtonInfiniteGrow');
+            let downloadButtonInfiniteGrow = document.getElementById('downloadButtonInfiniteGrow');
+            let chroma = document.getElementsByClassName('chroma')[0];
             let scale = 1.0;
             let shouldScale = false;
             let animationFrame;
@@ -98,7 +99,7 @@
                 animationFrame = requestAnimationFrame(scaleElement);
             }
 
-            downloadButtonInfiniteGrow.addEventListener('mouseover', function() {
+            chroma.addEventListener('mouseover', function() {
                 if (!shouldScale) {
                     shouldScale = true;
                     animationFrame = requestAnimationFrame(scaleElement);
