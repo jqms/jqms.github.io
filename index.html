@@ -94,7 +94,7 @@
             let animationFrame;
 
             function scaleElement() {
-                scale += 0.01
+                scale += 0.001
                 downloadButtonInfiniteGrow.style.transform = 'scale(' + scale + ')';
                 animationFrame = requestAnimationFrame(scaleElement);
             }
