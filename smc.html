@@ -355,15 +355,18 @@ The packet must contain a JSON object with the following structure (this is an e
 ---
 ### Usage
 There are a few things you can include in the root.
-- \`server_name\`: This is the name of your server, it will be used at some places to let the user know things come from you.
-  - This is the only required field, if it is not present, the packet will be ignored. 
+- \`server_name\`: This is the name of your server, it will be used in some places to let the user know that these restrictions are coming from you.
+  - This is the only required field, if it is not present, the packet will be ignored.
 - \`onix_client_modules\`: This is the meat of the packet, where you actually restrict features.
-- \`notification_message\`: You can override the default notification message with your own. Edits the value section of the 
+- \`notification_message\`: You can override the default notification message with your own. 
+  - When you join a server with blocked modules, a notification will say:
+      - Some modules have been restricted on \`server_name\`.
+        - \`notification_message\`
 
 ---
 Configuration begins in the \`onix_client_modules\` key.
 
-This key contains the name of modules and a JSON object describing how that module should behave.
+This key contains the name of modules and a JSON object describing how that module should be restricted.
 In this object, there are three main actions you can define for a module.
 - \`force_enable\`: Forces the module to be enabled. The user will not be able to disable it.
 - \`block\`: Blocks the module entirely. The user will not be able to enable it.
