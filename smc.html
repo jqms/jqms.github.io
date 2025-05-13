@@ -358,7 +358,7 @@ There are a few things you can include in the root.
 - \`server_name\`: This is the name of your server, it will be used at some places to let the user know things come from you.
   - This is the only required field, if it is not present, the packet will be ignored. 
 - \`onix_client_modules\`: This is the meat of the packet, where you actually restrict features.
-- \`notification_message\`: You can override the default notification message with your own. 
+- \`notification_message\`: You can override the default notification message with your own. Edits the value section of the 
 
 ---
 Configuration begins in the \`onix_client_modules\` key.
@@ -448,7 +448,7 @@ In this example, options \`3\` and \`4\`, which correspond to \`Snowy Rain\` and
 ## Finding Module Names
 You can find the valid module keys from this file: [en_US.lang](https://github.com/OnixClient/translations/blob/main/client/languages/en_US.lang).
 
-Use the key that ends in \`.name\` and **does not** include \`.setting.\`
+Use the key that starts with \`module.\`, ends in \`.name\` and **does not** include \`.setting.\`
 
 **Alternative Method:** You can find module names directly in-game with Onix Client:
 1. Open Onix Client's UI
@@ -460,7 +460,7 @@ Use the key that ends in \`.name\` and **does not** include \`.setting.\`
 6. This is the name you need to use in the \`messageValue\`
 
 ## Finding Setting Names
-Use the key that ends in \`.name\` and **includes** \`.setting.\`
+Use the key that starts with \`module.\`, ends in \`.name\` and **includes** \`.setting.\`
 
 **Alternative Method:** Use the same strategy as above, but clicking on a setting instead.
 
