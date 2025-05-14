@@ -9,13 +9,15 @@
     <meta name="theme-color" content="#008FC1">
     <meta content="Onix Client Server Module Control" property="og:title">
     <meta content="https://onixclient.com/smc" property="og:url">
-    <meta content="Onix Client Server Module Control (SMC) allows a server to directly control Onix Client modules." property="og:description">
+    <meta content="Onix Client Server Module Control (SMC) allows a server to directly control Onix Client modules."
+        property="og:description">
     <meta content="https://onixclient.com/assets/smalllogo.png" property="og:image">
     <meta content="#008FC1" data-react-helmet="true" name="theme-color">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-json.min.js"></script>
     <style>
         body {
@@ -59,7 +61,7 @@
 
         .documentation {
             max-width: 1200px;
-            margin: 0 20px 0 250px;
+            margin: 0 20px 0 320px;
             padding: 20px;
             line-height: 1.6;
             position: relative;
@@ -119,7 +121,7 @@
 
         .toc {
             position: fixed;
-            width: 220px;
+            width: 280px;
             top: 100px;
             left: 20px;
             background-color: #1e1e1e;
@@ -161,6 +163,20 @@
             font-weight: bold;
         }
 
+        .toc ul ul {
+            padding-left: 15px;
+            margin-top: 5px;
+        }
+
+        .toc ul ul li {
+            margin-bottom: 5px;
+        }
+
+        .toc ul ul a {
+            font-size: 0.9em;
+            color: #b0b0b0;
+        }
+
         .header-anchor {
             opacity: 0;
             margin-left: 8px;
@@ -170,12 +186,19 @@
             color: #008FC1;
         }
 
-        h2:hover .header-anchor {
+        h2:hover .header-anchor,
+        h3:hover .header-anchor {
             opacity: 1;
         }
 
         .highlight-section {
             background-color: rgba(0, 143, 193, 0.2) !important;
+            border-radius: 8px;
+            transition: background-color 0.5s ease-out;
+        }
+
+        .temporary-highlight {
+            background-color: rgba(0, 143, 193, 0.2);
             border-radius: 8px;
             transition: background-color 0.5s ease-out;
         }
@@ -226,7 +249,6 @@
             border-radius: 5px;
             padding: 15px;
             overflow-x: auto;
-            border-left: 4px solid #008FC1;
         }
 
         .doc-section code {
@@ -451,7 +473,8 @@ In this example, options \`3\` and \`4\`, which correspond to \`Snowy Rain\` and
 
 ---
 
-## Finding Module Names
+## Finding Internal Names
+### Finding Module Names
 You can find the valid module keys from this file: [en_US.lang](https://github.com/OnixClient/translations/blob/main/client/languages/en_US.lang).
 
 Use the key that starts with \`module.\`, ends in \`.name\` and **does not** include \`.setting.\`
@@ -465,7 +488,7 @@ Use the key that starts with \`module.\`, ends in \`.name\` and **does not** inc
 5. Control + Right-click on the module title to copy its internal name
 6. This is the name you need to use in the \`messageValue\`
 
-## Finding Setting Names
+### Finding Setting Names
 Use the key that starts with \`module.\`, ends in \`.name\` and **includes** \`.setting.\`
 
 **Alternative Method:** Use the same strategy as above, but clicking on a setting instead.
@@ -544,8 +567,7 @@ If you're running a Dragonfly server, you can use the [onix-module-control](http
                             </div>
                         `;
                     }
-                }
-                formattedHtml = formattedHtml.replace(/<pre><code( class="language-(\w+)")?>([\s\S]*?)<\/code><\/pre>/gi, function (match, langMatch, lang, code) {
+                } formattedHtml = formattedHtml.replace(/<pre><code( class="language-(\w+)")?>([\s\S]*?)<\/code><\/pre>/gi, function (match, langMatch, lang, code) {
                     const language = lang ? ` data-language="${lang}"` : '';
                     const langClass = lang ? ` class="language-${lang}"` : '';
                     return `
@@ -555,6 +577,11 @@ If you're running a Dragonfly server, you can use the [onix-module-control](http
                         </div>
                     `;
                 });
+                formattedHtml = formattedHtml.replace(/<h3>(.*?)<\/h3>/gi, function (match, content) {
+                    const headingId = content.toLowerCase().replace(/[^\w]+/g, '-').replace(/-+/g, '-').replace(/(^-|-$)/g, '');
+                    return `<h3 id="${headingId}">${content} <a href="#${headingId}" class="header-anchor">#</a></h3>`;
+                });
+
                 markdownContent.innerHTML = formattedHtml;
 
                 if (typeof Prism !== 'undefined') {
@@ -562,58 +589,149 @@ If you're running a Dragonfly server, you can use the [onix-module-control](http
                 }
 
                 updateTableOfContents();
-            }
-
-            function updateTableOfContents() {
+            } function updateTableOfContents() {
                 const tocElement = document.querySelector('.toc ul');
                 tocElement.innerHTML = '';
 
-                const headings = document.querySelectorAll('.doc-section h2[id]');
-                headings.forEach(heading => {
-                    const id = heading.getAttribute('id');
-                    const text = heading.textContent.replace('#', '').trim();
+                const docSections = document.querySelectorAll('.doc-section');
+
+                docSections.forEach(section => {
+                    const h2 = section.querySelector('h2[id]');
+                    if (!h2) return;
+
+                    const h2Id = h2.getAttribute('id');
+                    const h2Text = h2.textContent.replace('#', '').trim();
 
                     const listItem = document.createElement('li');
                     const link = document.createElement('a');
-                    link.href = '#' + id;
-                    link.textContent = text;
-
+                    link.href = '#' + h2Id;
+                    link.textContent = h2Text;
                     listItem.appendChild(link);
+
+                    const h3Elements = section.querySelectorAll('h3[id]');
+
+                    if (h3Elements.length > 0) {
+                        const subList = document.createElement('ul');
+
+                        h3Elements.forEach(h3 => {
+                            const h3Id = h3.getAttribute('id');
+                            const h3Text = h3.textContent.replace('#', '').trim();
+
+                            const subItem = document.createElement('li');
+                            const subLink = document.createElement('a');
+                            subLink.href = '#' + h3Id;
+                            subLink.textContent = h3Text;
+
+                            subItem.appendChild(subLink);
+                            subList.appendChild(subItem);
+                        });
+
+                        listItem.appendChild(subList);
+                    }
+
                     tocElement.appendChild(listItem);
                 });
             }
-        });
-
-        function highlightSection(sectionId) {
+        }); function highlightSection(sectionId) {
             const headerElement = document.getElementById(sectionId);
             if (!headerElement) return;
 
-            const section = headerElement.closest('.doc-section');
-            if (section) {
-                const highlightedSections = document.querySelectorAll('.highlight-section');
-                highlightedSections.forEach(el => {
-                    el.classList.remove('highlight-section');
-                    el.style.backgroundColor = "";
-                });
+            const highlightedElements = document.querySelectorAll('.highlight-section, .temporary-highlight');
+            highlightedElements.forEach(el => {
+                el.classList.remove('highlight-section', 'temporary-highlight');
+                el.style.backgroundColor = "";
+            });
 
-                section.classList.add('highlight-section');
+            const tempHighlights = document.querySelectorAll('.temp-highlight-container');
+            tempHighlights.forEach(el => {
+                while (el.firstChild) {
+                    el.parentNode.insertBefore(el.firstChild, el);
+                }
+                el.parentNode.removeChild(el);
+            }); if (headerElement.tagName.toLowerCase() === 'h3') {
+                const section = headerElement.closest('.doc-section');
+                if (!section) return;
 
+                const originalPosition = getComputedStyle(section).position;
+                if (originalPosition === 'static') {
+                    section.style.position = 'relative';
+                }
+
+                const highlight = document.createElement('div');
+                highlight.className = 'h3-highlight';
+                highlight.style.position = 'absolute';
+                highlight.style.backgroundColor = 'rgba(0, 143, 193, 0.2)';
+                highlight.style.borderRadius = '8px';
+                highlight.style.zIndex = '0';
+                highlight.style.width = '100%';
+                highlight.style.left = '0';
+                highlight.style.padding = '0';
+                highlight.style.margin = '0';
+                highlight.style.pointerEvents = 'none';
+                let currentH3Index = -1;
+                let nextH3Index = -1;
+
+                const allElements = section.querySelectorAll('*');
+                const elementArray = Array.from(allElements);
+
+                for (let i = 0; i < elementArray.length; i++) {
+                    if (elementArray[i] === headerElement) {
+                        currentH3Index = i;
+                    } else if (currentH3Index >= 0 && elementArray[i].tagName === 'H3') {
+                        nextH3Index = i;
+                        break;
+                    }
+                }
+                section.insertBefore(highlight, headerElement);
+
+                let endElement;
+                if (nextH3Index >= 0) {
+                    endElement = elementArray[nextH3Index];
+                } else {
+                    endElement = elementArray[elementArray.length - 1];
+                }
+
+                const h3Pos = headerElement.offsetTop;
+                highlight.style.top = (h3Pos - 10) + 'px'; let height;
+                if (nextH3Index >= 0) {
+                    const nextH3Pos = endElement.offsetTop;
+                    height = nextH3Pos - h3Pos;
+                } else {
+                    const sectionHeight = section.offsetHeight;
+                    const h3OffsetFromSection = h3Pos;
+                    height = (sectionHeight - h3OffsetFromSection) - 20;
+                }
+
+                highlight.style.height = height + 'px';
                 setTimeout(() => {
-                    const originalBg = window.getComputedStyle(section).backgroundColor;
-
-                    section.style.transition = "background-color 0.5s ease-out";
-                    section.style.backgroundColor = "#161616";
+                    highlight.style.transition = 'background-color 0.8s ease-out';
+                    highlight.style.backgroundColor = 'transparent';
 
                     setTimeout(() => {
-                        section.classList.remove('highlight-section');
-                        section.style.transition = "";
-                    }, 500);
+                        highlight.remove();
+                        if (originalPosition === 'static') {
+                            section.style.position = '';
+                        }
+                    }, 800);
                 }, 800);
-            }
-        }
+            } else {
+                const section = headerElement.closest('.doc-section');
+                if (section) {
+                    const originalBg = '#161616';
 
-        function updateTOC() {
-            const sections = document.querySelectorAll('h2[id]');
+                    section.style.transition = 'none';
+                    section.style.backgroundColor = 'rgba(0, 143, 193, 0.2)';
+
+                    void section.offsetWidth;
+
+                    setTimeout(() => {
+                        section.style.transition = 'background-color 0.8s ease-out';
+                        section.style.backgroundColor = originalBg;
+                    }, 800);
+                }
+            }
+        } function updateTOC() {
+            const sections = document.querySelectorAll('h2[id], h3[id]');
 
             const tocLinks = document.querySelectorAll('.toc a');
 
