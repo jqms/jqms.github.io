@@ -399,7 +399,8 @@ By default, setting a value will also set \`lock_value\` to true, but you can ma
             }
          }
       }
-   }
+   }, 
+  "server_name": "Example PvP"
 }
 \`\`\`
 This will **force-enable** the \`Environment Changer\` module and configure it to:
@@ -420,7 +421,8 @@ For number-based settings, you can use the \`min\` and \`max\` fields to limit t
          }
       }
     }
-  }
+  }, 
+  "server_name": "Example PvP"
 }
 \`\`\`
 This example limits the maximum gamma value in the \`Fullbright\` module to 3. You can have both \`min\` and \`max\` values set at the same time if needed.
@@ -441,7 +443,8 @@ For enum/list settings, you can use the \`removed_options\` field to remove spec
          }
       }
     }
-  }
+  }, 
+  "server_name": "Example PvP"
 }
 \`\`\`
 In this example, options \`3\` and \`4\`, which correspond to \`Snowy Rain\` and \`Hot\` from the list of options, are removed from the list. If the user had one of these selected, it will autoamtically revert to the default or first available valid option.
@@ -514,7 +517,6 @@ Use the key that starts with \`module.\`, ends in \`.name\` and **includes** \`.
                     mainContent = html.replace(/<h1[^>]*>.*?<\/h1>/i, '');
                 }
 
-                // Split content by h2 headings to create sections
                 const sections = mainContent.split(/<h2[^>]*>/i);
 
                 formattedHtml += docHeader;
@@ -522,7 +524,6 @@ Use the key that starts with \`module.\`, ends in \`.name\` and **includes** \`.
                 for (let i = 1; i < sections.length; i++) {
                     const sectionContent = sections[i];
 
-                    // Extract the heading text
                     const headingMatch = sectionContent.match(/^(.*?)<\/h2>/i);
                     if (headingMatch) {
                         const headingText = headingMatch[1];
