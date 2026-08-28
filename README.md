@@ -1,8 +1,9 @@
 # onixclient.com
 [Onix Client](https://onixclient.com)
+Official Onix Client website.
 
 # Revamp by
-[@EpiclyRaspberry](https://github.com/EpiclyRaspberry) & Continued by [@rosie](https://github.com/jqms)
+[@EpiclyRaspberry](https://github.com/EpiclyRaspberry) & Continued by [@jqms](https://github.com/jqms)
 
 ## Original website developers:
 
